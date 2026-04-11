@@ -1,0 +1,10 @@
+<h1>Bienvenido a Viajes GN</h1>
+
+@if (estaLogueado()) {
+    <p>Hola, {{ getUsuario()?.nombre }}! Explora nuestros destinos.</p>
+} @else {
+    <p>Inicia sesión para hacer tus reservas.</p>
+}
+
+<button (click)="irAViajes()">Ver Viajes Disponibles</button>
+<a routerLink="/viajes">Explorar destinos</a>

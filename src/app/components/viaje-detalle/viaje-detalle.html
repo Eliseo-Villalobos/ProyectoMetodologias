@@ -1,0 +1,28 @@
+@if (viaje) {
+    <h2>{{ viaje.destino }}, {{ viaje.pais }}</h2>
+    <p>{{ viaje.descripcion }}</p>
+    <p>Salida: {{ viaje.fecha_salida }}</p>
+    <p>Regreso: {{ viaje.fecha_regreso }}</p>
+    <p>Precio: ${{ viaje.precio }}</p>
+    <p>Lugares disponibles: {{ viaje.cupo_disponible }}</p>
+
+    <div>
+        <label>Cantidad de personas</label>
+        <input type="number" [(ngModel)]="cantidadPersonas" min="1" [max]="viaje.cupo_disponible" />
+    </div>
+
+    @if (mensaje) {
+        <p>{{ mensaje }}</p>
+    }
+
+    @if (error) {
+        <p>{{ error }}</p>
+    }
+
+    <button (click)="reservar()">Reservar</button>
+    <button (click)="regresar()">Regresar</button>
+    } @else if (error) {
+        <p>{{ error }}</p>
+    } @else {
+        <p>Cargando...</p>
+}

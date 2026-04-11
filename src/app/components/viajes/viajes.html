@@ -1,0 +1,20 @@
+<h2>Viajes Disponibles</h2>
+
+@if (error) {
+    <p>{{ error }}</p>
+}
+
+@for (viaje of viajes; track viaje.id_viaje) {
+    <div>
+        <h3>{{ viaje.destino }}, {{ viaje.pais }}</h3>
+        <p>Salida: {{ viaje.fecha_salida }}</p>
+        <p>Regreso: {{ viaje.fecha_regreso }}</p>
+        <p>Precio: ${{ viaje.precio }}</p>
+        <p>Lugares disponibles: {{ viaje.cupo_disponible }}</p>
+        <button (click)="verDetalle(viaje.id_viaje)">Ver detalle</button>
+    </div>
+}
+
+@if (viajes.length === 0 && !error) {
+    <p>No hay viajes disponibles por el momento.</p>
+}
