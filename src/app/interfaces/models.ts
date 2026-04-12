@@ -5,6 +5,12 @@ export interface Usuario {
     telefono?: string;
 }
 
+export interface Aerolinea {
+    id_aerolinea: number;
+    nombre: string;
+    logo_url?: string;
+}
+
 export interface Viaje {
     id_viaje: number;
     destino: string;
@@ -15,6 +21,11 @@ export interface Viaje {
     cupo_disponible: number;
     descripcion?: string;
     imagen_url?: string;
+    id_aerolinea?: number;
+    aerolinea_nombre?: string;
+    aerolinea_logo?: string;
+    latitud?: number;
+    longitud?: number;
 }
 
 export interface Reserva {
@@ -29,6 +40,7 @@ export interface Reserva {
     fecha_salida?: string;
     fecha_regreso?: string;
     precio?: number;
+    aerolinea_nombre?: string;
 }
 
 export interface LoginResponse {

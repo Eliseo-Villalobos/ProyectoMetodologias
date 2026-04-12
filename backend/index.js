@@ -9,6 +9,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/viajes', require('./routes/viajeRoutes'));
 app.use('/api/reservas', require('./routes/reservaRoutes'));
+app.use('/api/aerolineas', require('./routes/aerolineaRoutes'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

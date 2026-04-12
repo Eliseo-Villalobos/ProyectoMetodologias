@@ -1,0 +1,24 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>✈️ Viajes GN</h2>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a routerLink="/home" routerLinkActive="active">🏠 Inicio</a>
+    <a routerLink="/viajes" routerLinkActive="active">🌍 Viajes</a>
+
+    @if (estaLogueado()) {
+      <a routerLink="/mis-reservas" routerLinkActive="active">🎫 Mis Reservas</a>
+    }
+  </nav>
+
+  <div class="sidebar-footer">
+    @if (estaLogueado()) {
+      <p>👤 {{ getUsuario()?.nombre }}</p>
+      <button (click)="cerrarSesion()">Cerrar sesión</button>
+    } @else {
+      <a routerLink="/login">Iniciar sesión</a>
+      <a routerLink="/register">Registrarse</a>
+    }
+  </div>
+</div>

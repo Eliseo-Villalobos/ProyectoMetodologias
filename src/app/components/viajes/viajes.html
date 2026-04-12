@@ -1,20 +1,28 @@
-<h2>Viajes Disponibles</h2>
+<h2>Destinos disponibles</h2>
 
 @if (error) {
-    <p>{{ error }}</p>
+  <p>{{ error }}</p>
 }
 
-@for (viaje of viajes; track viaje.id_viaje) {
-    <div>
-        <h3>{{ viaje.destino }}, {{ viaje.pais }}</h3>
-        <p>Salida: {{ viaje.fecha_salida }}</p>
-        <p>Regreso: {{ viaje.fecha_regreso }}</p>
-        <p>Precio: ${{ viaje.precio }}</p>
-        <p>Lugares disponibles: {{ viaje.cupo_disponible }}</p>
-        <button (click)="verDetalle(viaje.id_viaje)">Ver detalle</button>
-    </div>
+@if (cargando) {
+  <p>Cargando destinos...</p>
 }
+
+<div class="viajes-grid">
+  @for (viaje of viajes; track viaje.id_viaje) {
+    <div class="viaje-card" (click)="verDetalle(viaje)">
+      <img [src]="viaje.imagen_url" [alt]="viaje.destino" />
+      <div class="viaje-info">
+        <h3>{{ viaje.destino }}, {{ viaje.pais }}</h3>
+        <p>✈️ {{ viaje.aerolinea_nombre }}</p>
+        <p>📅 {{ viaje.fecha_salida | fecha }} — {{ viaje.fecha_regreso | fecha }}</p>
+        <p>👥 Lugares: {{ viaje.cupo_disponible }}</p>
+        <strong>${{ viaje.precio }} MXN</strong>
+      </div>
+    </div>
+  }
+</div>
 
 @if (viajes.length === 0 && !error) {
-    <p>No hay viajes disponibles por el momento.</p>
+  <p>No hay viajes disponibles por el momento.</p>
 }
