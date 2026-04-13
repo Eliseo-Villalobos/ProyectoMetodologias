@@ -21,6 +21,12 @@ async function verificarTablas() {
   }
 }
 
+// MENSAJE PARA CUANDO SE RECIBA ALGO DE CONTACTO
+app.post('/contacto', (req, res) => {
+  console.log('Datos recibidos:', req.body);
+  res.send({ mensaje: 'Recibido correctamente' });
+});
+
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/viajes', require('./routes/viajeRoutes'));
 app.use('/api/reservas', require('./routes/reservaRoutes'));

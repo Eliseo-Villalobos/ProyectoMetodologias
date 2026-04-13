@@ -4,10 +4,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 
 @Component({
+  standalone: true,
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
 export class Login {
   private fb = inject(FormBuilder);
@@ -19,7 +20,7 @@ export class Login {
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   submit() {
@@ -40,7 +41,7 @@ export class Login {
       error: () => {
         this.error = 'Credenciales incorrectas';
         this.mensaje = '';
-      }
+      },
     });
   }
 }

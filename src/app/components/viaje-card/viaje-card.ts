@@ -3,6 +3,7 @@ import { FechaPipe } from '../../pipes/fecha-pipe';
 import { Viaje } from '../../interfaces/models';
 
 @Component({
+  standalone: true,
   selector: 'app-viaje-card',
   imports: [FechaPipe],
   templateUrl: './viaje-card.html',
@@ -12,7 +13,7 @@ export class ViajeCard {
   @Input() viaje!: Viaje; //recibe el viaje desde el componente padre
   @Output() seleccionar = new EventEmitter<Viaje>(); //emite el viaje seleccionado al componente padre
 
-  onSelect(){
+  onSelect() {
     this.seleccionar.emit(this.viaje);
   }
 }

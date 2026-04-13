@@ -6,6 +6,7 @@ import { Viajes } from './components/viajes/viajes';
 import { ViajeDetalle } from './components/viaje-detalle/viaje-detalle';
 import { MisReservas } from './components/mis-reservas/mis-reservas';
 import { NotFound } from './components/not-found/not-found';
+import { Contacto } from './components/contacto/contacto';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,5 +16,7 @@ export const routes: Routes = [
     { path: 'viajes', component: Viajes },
     { path: 'viajes/:id', component: ViajeDetalle },
     { path: 'mis-reservas', component: MisReservas },
+    {path: 'contacto', component: Contacto},
     { path: '**', component: NotFound }
+    
 ];

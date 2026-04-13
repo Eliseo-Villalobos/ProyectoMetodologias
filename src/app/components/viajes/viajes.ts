@@ -2,14 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViajeService } from '../../services/viaje';
 import { Viaje } from '../../interfaces/models';
-import { FechaPipe } from '../../pipes/fecha-pipe';
 import { ViajeCard } from '../viaje-card/viaje-card';
 
 @Component({
+  standalone: true,
   selector: 'app-viajes',
-  imports: [FechaPipe, ViajeCard],
+  imports: [ViajeCard],
   templateUrl: './viajes.html',
-  styleUrl: './viajes.css'
+  styleUrl: './viajes.css',
 })
 export class Viajes implements OnInit {
   private viajeService = inject(ViajeService);
@@ -28,7 +28,7 @@ export class Viajes implements OnInit {
       error: () => {
         this.error = 'Error al cargar los viajes';
         this.cargando = false;
-      }
+      },
     });
   }
 
@@ -37,8 +37,8 @@ export class Viajes implements OnInit {
       queryParams: {
         destino: viaje.destino,
         pais: viaje.pais,
-        precio: viaje.precio
-      }
+        precio: viaje.precio,
+      },
     });
   }
 }

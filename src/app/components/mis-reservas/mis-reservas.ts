@@ -5,10 +5,11 @@ import { AuthService } from '../../services/auth';
 import { Reserva } from '../../interfaces/models';
 
 @Component({
+  standalone: true,
   selector: 'app-mis-reservas',
   imports: [],
   templateUrl: './mis-reservas.html',
-  styleUrl: './mis-reservas.css'
+  styleUrl: './mis-reservas.css',
 })
 export class MisReservas implements OnInit {
   private reservaService = inject(ReservaService);
@@ -27,8 +28,8 @@ export class MisReservas implements OnInit {
 
     const usuario = this.authService.getUsuario();
     this.reservaService.getMisReservas(usuario!.id_usuario).subscribe({
-      next: (data) => this.reservas = data,
-      error: () => this.error = 'Error al cargar las reservas'
+      next: (data) => (this.reservas = data),
+      error: () => (this.error = 'Error al cargar las reservas'),
     });
   }
 
@@ -38,10 +39,10 @@ export class MisReservas implements OnInit {
         this.mensaje = 'Reserva cancelada';
         const usuario = this.authService.getUsuario();
         this.reservaService.getMisReservas(usuario!.id_usuario).subscribe({
-          next: (data) => this.reservas = data
+          next: (data) => (this.reservas = data),
         });
       },
-      error: () => this.error = 'Error al cancelar la reserva'
+      error: () => (this.error = 'Error al cancelar la reserva'),
     });
   }
 }

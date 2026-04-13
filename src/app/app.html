@@ -4,3 +4,11 @@
     <router-outlet />
   </main>
 </div>
+
+<footer>
+  <button (click)="toggleChat()">Contáctanos</button>
+</footer>
+
+@if (mostrarChat) {
+  <app-contacto></app-contacto>
+}

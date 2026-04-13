@@ -4,10 +4,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 
 @Component({
+  standalone: true,
   selector: 'app-register',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.html',
-  styleUrl: './register.css'
+  styleUrl: './register.css',
 })
 export class Register {
   private fb = inject(FormBuilder);
@@ -21,7 +22,7 @@ export class Register {
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]]
+    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
   });
 
   submit() {
@@ -41,7 +42,7 @@ export class Register {
       error: () => {
         this.error = 'El email ya está registrado';
         this.mensaje = '';
-      }
+      },
     });
   }
 }
