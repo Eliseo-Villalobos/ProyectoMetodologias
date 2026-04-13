@@ -11,6 +11,7 @@ const Usuario = {
         'INSERT INTO usuarios (nombre, email, password, telefono) VALUES (?, ?, ?, ?)',
         [nombre, email, password, telefono]
         );
+        console.log('Usuario creado con nombre:', nombre);
         return result.insertId;
     }
 };

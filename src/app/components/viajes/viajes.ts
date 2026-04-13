@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { ViajeService } from '../../services/viaje';
 import { Viaje } from '../../interfaces/models';
 import { FechaPipe } from '../../pipes/fecha-pipe';
+import { ViajeCard } from '../viaje-card/viaje-card';
 
 @Component({
   selector: 'app-viajes',
-  imports: [FechaPipe],
+  imports: [FechaPipe, ViajeCard],
   templateUrl: './viajes.html',
   styleUrl: './viajes.css'
 })
