@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 13-04-2026 a las 00:28:48
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1:3307
+-- Generation Time: Apr 14, 2026 at 03:32 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_reservas_viajes`
+-- Database: `bd_reservas_viajes`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `aerolineas`
+-- Table structure for table `aerolineas`
 --
 
 CREATE TABLE `aerolineas` (
@@ -35,7 +35,7 @@ CREATE TABLE `aerolineas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `aerolineas`
+-- Dumping data for table `aerolineas`
 --
 
 INSERT INTO `aerolineas` (`id_aerolinea`, `nombre`, `logo_url`, `created_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `aerolineas` (`id_aerolinea`, `nombre`, `logo_url`, `created_at`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reservas`
+-- Table structure for table `reservas`
 --
 
 CREATE TABLE `reservas` (
@@ -61,16 +61,17 @@ CREATE TABLE `reservas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `reservas`
+-- Dumping data for table `reservas`
 --
 
 INSERT INTO `reservas` (`id_reserva`, `id_usuario`, `id_viaje`, `fecha_reserva`, `cantidad_personas`, `estado`) VALUES
-(1, 1, 1, '2026-04-12 07:44:20', 2, 'pendiente');
+(1, 1, 1, '2026-04-12 07:44:20', 2, 'pendiente'),
+(2, 2, 5, '2026-04-13 23:12:14', 1, 'pendiente');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -83,16 +84,17 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `password`, `telefono`, `created_at`) VALUES
-(1, 'juan', 'juanmanuelfriascortes@gmail.com', '$2b$10$7ybEPo6hJfWmvGcBPZbZUODKTB.FCooiw/A78Sh76Pka72vw/elT6', '4491810605', '2026-04-11 22:26:03');
+(1, 'juan', 'juanmanuelfriascortes@gmail.com', '$2b$10$7ybEPo6hJfWmvGcBPZbZUODKTB.FCooiw/A78Sh76Pka72vw/elT6', '4491810605', '2026-04-11 22:26:03'),
+(2, 'Sara', 'paltex@gmail.com', '$2b$10$NRSFmJNnfaI5dcbKd/9IZeU4fjl/IRKKniN5dxl9qFjPKhHDhN/3q', '4623043057', '2026-04-13 23:09:34');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `viajes`
+-- Table structure for table `viajes`
 --
 
 CREATE TABLE `viajes` (
@@ -112,7 +114,7 @@ CREATE TABLE `viajes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `viajes`
+-- Dumping data for table `viajes`
 --
 
 INSERT INTO `viajes` (`id_viaje`, `destino`, `pais`, `fecha_salida`, `fecha_regreso`, `precio`, `cupo_disponible`, `descripcion`, `imagen_url`, `created_at`, `id_aerolinea`, `latitud`, `longitud`) VALUES
@@ -123,17 +125,17 @@ INSERT INTO `viajes` (`id_viaje`, `destino`, `pais`, `fecha_salida`, `fecha_regr
 (5, 'Puerto Vallarta', 'México', '2025-10-01', '2025-10-07', 12000.00, 18, 'Playas y vida nocturna inigualable', 'https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=600', '2026-04-12 06:41:35', 1, 20.6534000, -105.2253000);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `aerolineas`
+-- Indexes for table `aerolineas`
 --
 ALTER TABLE `aerolineas`
   ADD PRIMARY KEY (`id_aerolinea`);
 
 --
--- Indices de la tabla `reservas`
+-- Indexes for table `reservas`
 --
 ALTER TABLE `reservas`
   ADD PRIMARY KEY (`id_reserva`),
@@ -141,60 +143,60 @@ ALTER TABLE `reservas`
   ADD KEY `id_viaje` (`id_viaje`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indices de la tabla `viajes`
+-- Indexes for table `viajes`
 --
 ALTER TABLE `viajes`
   ADD PRIMARY KEY (`id_viaje`),
   ADD KEY `id_aerolinea` (`id_aerolinea`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `aerolineas`
+-- AUTO_INCREMENT for table `aerolineas`
 --
 ALTER TABLE `aerolineas`
   MODIFY `id_aerolinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `reservas`
+-- AUTO_INCREMENT for table `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `viajes`
+-- AUTO_INCREMENT for table `viajes`
 --
 ALTER TABLE `viajes`
   MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `reservas`
+-- Constraints for table `reservas`
 --
 ALTER TABLE `reservas`
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`id_viaje`) REFERENCES `viajes` (`id_viaje`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `viajes`
+-- Constraints for table `viajes`
 --
 ALTER TABLE `viajes`
   ADD CONSTRAINT `viajes_ibfk_1` FOREIGN KEY (`id_aerolinea`) REFERENCES `aerolineas` (`id_aerolinea`);

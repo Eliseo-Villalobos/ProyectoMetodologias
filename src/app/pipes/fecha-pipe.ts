@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class FechaPipe implements PipeTransform {
-  transform(value: string): string {
+  transform(value: string | undefined): string {
     if (!value) return '';
     const fecha = new Date(value);
     return fecha.toLocaleDateString('es-MX', {

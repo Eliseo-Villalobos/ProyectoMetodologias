@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, output } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
@@ -12,6 +12,14 @@ import { AuthService } from '../../services/auth';
 export class Sidebar {
   private authService = inject(AuthService);
   private router = inject(Router);
+
+  visible = signal(true);
+  visibleChange = output<boolean>();
+
+  toggle() {
+    this.visible.set(!this.visible());
+    this.visibleChange.emit(this.visible());
+  }
 
   estaLogueado() {
     return this.authService.estaLogueado();

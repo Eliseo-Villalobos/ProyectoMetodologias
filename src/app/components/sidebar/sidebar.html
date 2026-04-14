@@ -1,4 +1,6 @@
-<div class="sidebar">
+<button class="toggle-btn" (click)="toggle()">☰</button>
+
+<div class="sidebar" [class.sidebar-hidden]="!visible()">
   <div class="sidebar-header">
     <h2>✈️ Viajes GN</h2>
   </div>
@@ -10,8 +12,6 @@
     @if (estaLogueado()) {
       <a routerLink="/mis-reservas" routerLinkActive="active">🎫 Mis Reservas</a>
     }
-
-    
   </nav>
 
   <div class="sidebar-footer">

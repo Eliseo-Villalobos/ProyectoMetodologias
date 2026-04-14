@@ -1,0 +1,31 @@
+@if (estaLogueado()) {
+  <div class="perfil-header">
+    <div class="perfil-info" (click)="toggleMenu()">
+      <img [src]="getAvatar()" [alt]="getUsuario()?.nombre" class="avatar" />
+      <span>{{ getUsuario()?.nombre }}</span>
+      <span>▾</span>
+    </div>
+
+    @if (mostrarMenu()) {
+      <div class="perfil-menu">
+        <p class="perfil-email">{{ getUsuario()?.email }}</p>
+        <button (click)="mostrarAvatares.set(true)">🖼️ Cambiar avatar</button>
+        <button (click)="cerrarSesion()">🚪 Cerrar sesión</button>
+
+        @if (mostrarAvatares()) {
+          <div class="avatares-grid">
+            @for (avatar of avatares; track avatar) {
+              <img
+                [src]="avatar"
+                [alt]="avatar"
+                class="avatar-opcion"
+                [class.seleccionado]="getAvatar() === avatar"
+                (click)="seleccionarAvatar(avatar)"
+              />
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

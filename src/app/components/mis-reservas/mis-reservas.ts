@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ReservaService } from '../../services/reserva';
 import { AuthService } from '../../services/auth';
 import { Reserva } from '../../interfaces/models';
+import { FechaPipe } from '../../pipes/fecha-pipe';
 
 @Component({
   standalone: true,
   selector: 'app-mis-reservas',
-  imports: [],
+  imports: [FechaPipe],
   templateUrl: './mis-reservas.html',
   styleUrl: './mis-reservas.css',
 })

@@ -1,6 +1,7 @@
 <div class="app-layout">
-  <app-sidebar />
-  <main class="main-content">
+  <app-sidebar (visibleChange)="onSidebarChange($event)" />
+  <main class="main-content" [class.content-expanded]="!sidebarVisible()">
+    <app-perfil-header />
     <router-outlet />
   </main>
 </div>

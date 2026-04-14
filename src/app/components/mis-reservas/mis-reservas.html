@@ -11,8 +11,8 @@
 @for (reserva of reservas; track reserva.id_reserva) {
     <div>
         <h3>{{ reserva.destino }}, {{ reserva.pais }}</h3>
-        <p>Salida: {{ reserva.fecha_salida }}</p>
-        <p>Regreso: {{ reserva.fecha_regreso }}</p>
+        <p>Salida: {{ reserva.fecha_salida | fecha }}</p>
+        <p>Regreso: {{ reserva.fecha_regreso | fecha }}</p>
         <p>Personas: {{ reserva.cantidad_personas }}</p>
         <p>Estado: {{ reserva.estado }}</p>
         <p>Total: ${{ reserva.precio }}</p>
