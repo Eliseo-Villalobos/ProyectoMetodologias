@@ -2,10 +2,100 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
-  background: white;
+  width: min(400px, calc(100vw - 40px));
+  min-width: 300px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: Arial, sans-serif;
+
+  transform-origin: bottom right;
+  opacity: 0;
+  transform: scale(0.85);
+  animation: popIn 260ms ease-out forwards;
+}
+
+/* Título */
+.chat-box h3 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Formulario */
+.chat-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inputs y textarea */
+.chat-box input,
+.chat-box textarea {
+  width: 90%;
+  padding: 10px 10px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  padding: 15px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* Efecto focus */
+.chat-box input:focus,
+.chat-box textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Textarea específico */
+.chat-box textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Mensajes de error */
+.chat-box p {
+  margin: -6px 0 4px 0;
+  font-size: 12px;
+  color: #e11d48;
+}
+
+/* Botón */
+.chat-box button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  background: #4f46e5;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover botón */
+.chat-box button:hover {
+  background: #4338ca;
+}
+
+/* Botón deshabilitado */
+.chat-box button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}
+
+/* Animación */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
