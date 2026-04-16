@@ -9,7 +9,7 @@ import { PerfilHeader } from './components/perfil-header/perfil-header';
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, Sidebar, Contacto,PerfilHeader],
+  imports: [CommonModule, RouterOutlet, Sidebar, Contacto, PerfilHeader],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })

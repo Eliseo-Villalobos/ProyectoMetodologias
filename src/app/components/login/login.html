@@ -1,32 +1,59 @@
-<h2>Iniciar Sesión</h2>
+<div class="login-card">
 
-<form [formGroup]="form" (ngSubmit)="submit()">
-
+  <!-- Panel izquierdo -->
+  <div class="login-left">
+  <img src="assets/in.gif" class="bg-gif" alt="" />
+  
   <div>
-    <label>Email</label>
-    <input type="email" formControlName="email" placeholder="correo@ejemplo.com" />
-    @if (form.get('email')?.invalid && form.get('email')?.touched) {
-      <span>Email inválido</span>
-    }
+    <h1>¡Bienvenido a Pingu Tours!</h1>
+    <p>Inicia sesión para acceder a tus reservas y descubrir nuevos destinos.</p>
+  </div>
+  <div class="dots">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+  <!-- Panel derecho -->
+  <div class="login-right">
+    <h2>Iniciar Sesión</h2>
+    <p class="subtitle">Ingresa tus credenciales para continuar</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      @if (form.get('email')?.invalid && form.get('email')?.touched) {
+        <span class="error-text">Email inválido</span>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <span class="error-text">Mínimo 6 caracteres</span>
+      }
+
+      @if (mensaje) {
+        <p class="mensaje">{{ mensaje }}</p>
+      }
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+
+      <button mat-raised-button class="submit-btn" type="submit">Entrar</button>
+
+    </form>
+
+    <p class="login-link">
+      ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
+    </p>
   </div>
 
-  <div>
-    <label>Password</label>
-    <input type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
-    @if (form.get('password')?.invalid && form.get('password')?.touched) {
-      <span>Mínimo 6 caracteres</span>
-    }
-  </div>
-
-  @if (mensaje) {
-    <p>{{ mensaje }}</p>
-  }
-
-  @if (error) {
-    <p>{{ error }}</p>
-  }
-
-  <button type="submit">Entrar</button>
-  <a routerLink="/register">¿No tienes cuenta? Regístrate</a>
-
-</form>
+</div>

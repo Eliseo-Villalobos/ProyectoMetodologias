@@ -4,98 +4,121 @@
   right: 20px;
   width: min(400px, calc(100vw - 40px));
   min-width: 300px;
-  background: #ffffff;
+  background: rgba(10, 10, 15, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   font-family: Arial, sans-serif;
-
   transform-origin: bottom right;
   opacity: 0;
   transform: scale(0.85);
   animation: popIn 260ms ease-out forwards;
 }
 
-/* Título */
-.chat-box h3 {
-  margin: 0 0 16px 0;
-  font-size: 20px;
-  text-align: center;
-  color: #333;
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-/* Formulario */
+.chat-box h3 {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  padding: 0;
+  margin: 0;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
 .chat-box form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Inputs y textarea */
 .chat-box input,
 .chat-box textarea {
   width: 90%;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
   font-size: 14px;
   transition: all 0.2s ease;
   outline: none;
 }
 
-/* Efecto focus */
-.chat-box input:focus,
-.chat-box textarea:focus {
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+.chat-box input::placeholder,
+.chat-box textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
-/* Textarea específico */
+.chat-box input:focus,
+.chat-box textarea:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .chat-box textarea {
   resize: none;
   min-height: 100px;
 }
 
-/* Mensajes de error */
 .chat-box p {
   margin: -6px 0 4px 0;
   font-size: 12px;
-  color: #e11d48;
+  color: #f87171;
 }
 
-/* Botón */
-.chat-box button {
+.chat-box button[type="submit"] {
   margin-top: 10px;
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background: #4f46e5;
+  background: #1F4E79;
   color: white;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 100%;
 }
 
-/* Hover botón */
-.chat-box button:hover {
-  background: #4338ca;
+.chat-box button[type="submit"]:hover {
+  background: #2d6fa3;
+  transform: translateY(-1px);
 }
 
-/* Botón deshabilitado */
-.chat-box button:disabled {
-  background: #a5b4fc;
+.chat-box button[type="submit"]:disabled {
+  background: rgba(31, 78, 121, 0.4);
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Animación */
 @keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
 }

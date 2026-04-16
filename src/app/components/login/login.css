@@ -1,0 +1,245 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #e8edf2;
+}
+
+.login-card {
+  display: flex;
+  width: 820px;
+  min-height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Panel izquierdo */
+.login-left {
+  flex: 1;
+  background: linear-gradient(145deg, #1F4E79, #2d6fa3);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-left::before,
+.login-left::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.login-left::before {
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  right: -60px;
+}
+
+.login-left::after {
+  width: 180px;
+  height: 180px;
+  bottom: -40px;
+  left: -40px;
+}
+
+.login-left h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-left p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.login-left .dots {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-left .dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.login-left .dots span.active {
+  background: white;
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* Panel derecho */
+.login-right {
+  flex: 1;
+  background: white;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.login-right .subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0 0 32px;
+}
+
+.login-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.error-text {
+  color: #e53935;
+  font-size: 0.78rem;
+  margin: -4px 0 4px 2px;
+}
+
+.submit-btn {
+  margin-top: 12px;
+  height: 46px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px !important;
+  background: linear-gradient(90deg, #1F4E79, #2d6fa3) !important;
+  color: white !important;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #888;
+}
+
+.login-link a {
+  color: #1F4E79;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.mensaje {
+  color: #2e7d32;
+  font-size: 0.85rem;
+  background: #e8f5e9;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.error {
+  color: #c62828;
+  font-size: 0.85rem;
+  background: #ffebee;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Animación de entrada de la card */
+.login-card,
+.register-card {
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botón con efecto hover */
+.submit-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(31, 78, 121, 0.4) !important;
+}
+
+.submit-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Círculos flotantes del panel izquierdo */
+.login-left::before,
+.register-left::before {
+  animation: float 6s ease-in-out infinite;
+}
+
+.login-left::after,
+.register-left::after {
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Quita los círculos decorativos anteriores */
+.login-left::before,
+.login-left::after,
+.register-left::before,
+.register-left::after {
+  display: none;
+}
+
+/* GIF de fondo */
+.bg-gif {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Asegura que el texto quede encima del GIF */
+.login-left > *:not(.bg-gif),
+.register-left > *:not(.bg-gif) {
+  position: relative;
+  z-index: 1;
+}

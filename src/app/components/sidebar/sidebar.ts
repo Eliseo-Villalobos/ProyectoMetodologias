@@ -13,7 +13,7 @@ export class Sidebar {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  visible = signal(true);
+  visible = signal(false);
   visibleChange = output<boolean>();
 
   toggle() {

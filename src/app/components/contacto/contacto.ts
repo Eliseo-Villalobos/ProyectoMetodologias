@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./contacto.css'],
 })
 export class Contacto {
-  //para mandar los datos del formulario al servidor
+  @Output() cerrar = new EventEmitter<void>();
+
   private http = inject(HttpClient);
   nombre = '';
   correo = '';
