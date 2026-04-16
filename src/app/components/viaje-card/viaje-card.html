@@ -1,0 +1,10 @@
+<div class="viaje-card" (click)="onSelect()">
+  <img [src]="viaje.imagen_url" [alt]="viaje.destino" />
+  <div class="viaje-info">
+    <h3>{{ viaje.destino }}, {{ viaje.pais }}</h3>
+    <p>✈️ {{ viaje.aerolinea_nombre }}</p>
+    <p>📅 {{ viaje.fecha_salida | fecha }} — {{ viaje.fecha_regreso | fecha }}</p>
+    <p>👥 Lugares: {{ viaje.cupo_disponible }}</p>
+    <strong>${{ viaje.precio }} MXN</strong>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="home-hero">
+  <div class="hero-content">
+    <h1>Descubre el mundo ✈️</h1>
+    <p>Los mejores destinos de México al mejor precio</p>
+
+    @if (estaLogueado()) {
+      <h3>¡Bienvenido de nuevo, {{ getUsuario()?.nombre }}!</h3>
+      <button (click)="irAViajes()">Ver destinos disponibles</button>
+    } @else {
+      <p>Inicia sesión para reservar tu próxima aventura</p>
+      <a routerLink="/register">Comenzar ahora</a>
+    }
+  </div>
+</div>
+
+<div class="home-info">
+  <div class="info-card">
+    <span>🏖️</span>
+    <h3>Destinos increíbles</h3>
+    <p>Cancún, Los Cabos, Puerto Vallarta y más</p>
+  </div>
+  <div class="info-card">
+    <span>💰</span>
+    <h3>Mejores precios</h3>
+    <p>Paquetes desde $6,000 MXN todo incluido</p>
+  </div>
+  <div class="info-card">
+    <span>🛡️</span>
+    <h3>Viaja seguro</h3>
+    <p>Reservas confirmadas y garantizadas</p>
+  </div>
+  <div class="info-card">
+    <span>📱</span>
+    <h3>Fácil y rápido</h3>
+    <p>Reserva en minutos desde cualquier dispositivo</p>
+  </div>
+</div>

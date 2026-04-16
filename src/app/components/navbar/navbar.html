@@ -1,0 +1,13 @@
+<nav>
+    <a routerLink="/home">Inicio</a>
+    <a routerLink="/viajes">Viajes</a>
+
+    @if (estaLogueado()) {
+        <a routerLink="/mis-reservas">Mis Reservas</a>
+        <span>Hola, {{ getUsuario()?.nombre }}</span>
+        <button (click)="cerrarSesion()">Cerrar sesión</button>
+    } @else {
+        <a routerLink="/login">Login</a>
+        <a routerLink="/register">Registro</a>
+    }
+</nav>

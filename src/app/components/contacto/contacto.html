@@ -1,0 +1,46 @@
+<div class="chat-box">
+
+  <h3>Contacto</h3>
+
+  <form #formContacto="ngForm" (ngSubmit)="enviar(formContacto)">
+
+    <input 
+      name="nombre" 
+      [(ngModel)]="nombre" 
+      #nom="ngModel" 
+      required 
+      placeholder="Nombre"
+    >
+    @if (nom.invalid && nom.touched) {
+      <p>Requerido</p>
+    }
+
+    <input 
+      name="correo" 
+      [(ngModel)]="correo" 
+      #cor="ngModel" 
+      required 
+      email 
+      placeholder="Correo"
+    >
+    @if (cor.invalid && cor.touched) {
+      <p>Correo inválido</p>
+    }
+
+    <textarea 
+      name="mensaje" 
+      [(ngModel)]="mensaje" 
+      #msg="ngModel" 
+      required
+    ></textarea>
+    @if (msg.invalid && msg.touched) {
+      <p>Mensaje requerido</p>
+    }
+
+    <button type="submit" [disabled]="formContacto.invalid">
+      Enviar
+    </button>
+
+  </form>
+
+</div>

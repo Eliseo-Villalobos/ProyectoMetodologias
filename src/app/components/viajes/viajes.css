@@ -1,0 +1,24 @@
+.viajes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.viaje-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.viaje-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.viaje-info {
+  padding: 15px;
+}

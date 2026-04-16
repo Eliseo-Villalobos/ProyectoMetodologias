@@ -1,0 +1,27 @@
+<h2>Mis Reservas</h2>
+
+@if (mensaje) {
+    <p>{{ mensaje }}</p>
+}
+
+@if (error) {
+    <p>{{ error }}</p>
+}
+
+@for (reserva of reservas; track reserva.id_reserva) {
+    <div>
+        <h3>{{ reserva.destino }}, {{ reserva.pais }}</h3>
+        <p>Salida: {{ reserva.fecha_salida | fecha }}</p>
+        <p>Regreso: {{ reserva.fecha_regreso | fecha }}</p>
+        <p>Personas: {{ reserva.cantidad_personas }}</p>
+        <p>Estado: {{ reserva.estado }}</p>
+        <p>Total: ${{ reserva.precio }}</p>
+        @if (reserva.estado !== 'cancelada') {
+            <button (click)="cancelar(reserva.id_reserva)">Cancelar reserva</button>
+        }
+    </div>
+}
+
+@if (reservas.length === 0 && !error) {
+    <p>No tienes reservas aún.</p>
+}

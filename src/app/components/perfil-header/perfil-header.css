@@ -1,0 +1,91 @@
+.perfil-header {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 200;
+}
+
+.perfil-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.perfil-info span {
+  font-size: 0.9rem;
+  color: #1F4E79;
+  font-weight: bold;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #1F4E79;
+}
+
+.perfil-menu {
+  position: absolute;
+  right: 0;
+  top: 55px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 15px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.perfil-email {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.perfil-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.perfil-menu button:hover {
+  background: #f5f5f5;
+}
+
+.avatares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.avatar-opcion {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+.avatar-opcion:hover {
+  border: 2px solid #2E75B6;
+}
+
+.seleccionado {
+  border: 2px solid #1F4E79;
+}
