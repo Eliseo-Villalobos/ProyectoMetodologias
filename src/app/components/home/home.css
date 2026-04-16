@@ -8,9 +8,19 @@
   width: 100%;
   max-width: 100vw;  
   overflow-x: hidden; 
-  background-color: #F2EDE4;
   font-family: 'DM Sans', sans-serif;
   color: #1B3D5F;
+}
+
+/* modo claro */
+:host {
+  background-color: #F2EDE4;
+}
+
+/* modo oscuro */
+:host-context(.dark-theme) {
+  background-color: #121212;
+  color: #e8eaf6;
 }
 
 /* ============================
@@ -610,53 +620,46 @@
   overflow: hidden;
 }
 
-/* Efecto general */
 .hover-card:hover {
   transform: scale(1.04);
   transition: transform 0.35s ease;
 }
 
-/* Imagen zoom */
 .hover-card:hover .dest-img {
   transform: scale(1.1);
 }
 
-/* Overlay oculto */
+/* Overlay cubre todo el recuadro de la imagen */
 .dest-overlay {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 
-/* Mostrar overlay */
 .hover-card:hover .dest-overlay {
   opacity: 1;
 }
 
-/* GIF */
+/* GIF cubre todo el overlay */
 .dest-overlay img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(1.05);
   transition: all 0.4s ease;
 }
 
-/* Animación del GIF */
 .hover-card:hover .dest-overlay img {
   opacity: 1;
   transform: scale(1);
-}
-
-.section-categories,
-.section-destinations,
-.section-cta {
-  padding: 80px 24px;
 }
 
 /* ============================
@@ -672,4 +675,34 @@
   background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
   z-index: 3;
   pointer-events: none;
+}
+/* ===== MODO OSCURO ===== */
+body.dark-theme {
+  --mat-sys-surface: #121212 !important;
+  background-color: #121212 !important;
+  color: #e8eaf6;
+}
+
+body.dark-theme .main-content {
+  background-color: #121212 !important;
+  color: #e8eaf6;
+}
+
+/* El footer ya es oscuro, solo se ajusta un poco*/
+body.dark-theme .site-footer {
+  background-color: #050508;
+}
+
+/* Cards y contenedores que tengan fondo blanco */
+body.dark-theme mat-card {
+  background-color: #1e1e2f;
+  color: #e8eaf6;
+}
+
+/* Textos generales */
+body.dark-theme p,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+  color: #e8eaf6;
 }

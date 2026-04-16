@@ -201,3 +201,40 @@ app-contacto {
   z-index: 999;
   position: relative;
 }
+/* ===== MODO OSCURO ===== */
+body.dark-theme {
+  --mat-sys-surface: #121212 !important;
+  background-color: #121212 !important;
+  color: #e8eaf6;
+}
+
+body.dark-theme .main-content {
+  background-color: #121212 !important;
+  color: #e8eaf6;
+}
+
+/* El footer ya es oscuro, solo se ajusta un poco*/
+body.dark-theme .site-footer {
+  background-color: #050508;
+}
+
+/* Cards y contenedores que tengan fondo blanco */
+body.dark-theme mat-card {
+  background-color: #1e1e2f;
+  color: #e8eaf6;
+}
+
+/* Textos generales */
+body.dark-theme p,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+  color: #e8eaf6;
+}
+body.dark-theme,
+body.dark-theme .mat-app-background,
+body.dark-theme .mat-drawer-container,
+body.dark-theme .mat-sidenav-container {
+  background-color: #121212 !important;
+  color: #e8eaf6 !important;
+}

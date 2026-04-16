@@ -1,17 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Tema {
-  private isDarkMode = false;
+  isDarkMode = signal(false);//senal para poder mandarla a otros archivos
 
   toggleTheme(){
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark-theme', this.isDarkMode);
+    this.isDarkMode.set(!this.isDarkMode());
+    document.body.classList.toggle('dark-theme', this.isDarkMode());
   }
 
-  getIsDarkMode(){
-    return this.isDarkMode;
-  }
 }

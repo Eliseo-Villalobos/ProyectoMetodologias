@@ -5,7 +5,14 @@
   min-height: 100vh;
   background: #e8edf2;
 }
-
+:host {
+  background-color: #F2EDE4;
+}
+/* modo oscuro */
+:host-context(.dark-theme) {
+  background-color: #121212;
+  color: #e8eaf6;
+}
 .register-card {
   display: flex;
   width: 860px;
@@ -249,4 +256,7 @@
 .register-left > *:not(.bg-gif) {
   position: relative;
   z-index: 1;
+}
+.dark-theme .container {
+  background-color: #1e1e1e;
 }

@@ -13,7 +13,7 @@
     <!--Parte del tema de la pagina-->
     <button mat-icon-button (click)="temaService.toggleTheme()">
     <mat-icon>
-      {{ temaService.getIsDarkMode() ? 'dark_mode' : 'light_mode' }}
+      {{ temaService.isDarkMode() ? 'dark_mode' : 'light_mode' }}
     </mat-icon>
   </button>
     <a routerLink="/home" routerLinkActive="active">🏠 Inicio</a>
