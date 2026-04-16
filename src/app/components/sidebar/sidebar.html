@@ -1,8 +1,12 @@
-<button class="toggle-btn" (click)="toggle()">☰</button>
+<button class="toggle-btn" (click)="toggle()" [class.hidden]="visible()">☰</button>
+<!-- Overlay -->
+<div class="overlay" [class.active]="visible()" (click)="visible.set(false)"></div>
 
+<!-- Sidebar -->
 <div class="sidebar" [class.sidebar-hidden]="!visible()">
+  <br>
   <div class="sidebar-header">
-    <h2>✈️ Viajes GN</h2>
+    <h2>Pingu Tours</h2>
   </div>
 
   <nav class="sidebar-nav">
@@ -16,7 +20,7 @@
     <a routerLink="/viajes" routerLinkActive="active">🌍 Viajes</a>
 
     @if (estaLogueado()) {
-      <a routerLink="/mis-reservas" routerLinkActive="active">🎫 Mis Reservas</a>
+      <a routerLink="/mis-reservas">🎫 Mis Reservas</a>
     }
   </nav>
 
