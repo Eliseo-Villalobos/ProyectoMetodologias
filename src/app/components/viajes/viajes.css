@@ -1,24 +1,200 @@
+/* === VIAJES PAGE === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #F2EDE4;
+  color: #1B3D5F;
+}
+
+/* ============================
+   PAGE WRAPPER
+============================= */
+.viajes-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ============================
+   HEADER
+============================= */
+.viajes-header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.viajes-header::after {
+  content: 'DESTINOS';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: rgba(27, 61, 95, 0.05);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: 4px;
+}
+
+.section-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4EAEC5;
+  margin: 0 0 10px;
+}
+
+.viajes-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #1B3D5F;
+  margin: 0 0 8px;
+}
+
+.viajes-subtitle {
+  position: relative;
+  z-index: 1;
+  color: #B5A48A;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ============================
+   GRID
+============================= */
 .viajes-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+  gap: 28px;
 }
 
-.viaje-card {
-  background: white;
-  border-radius: 12px;
+/* ============================
+   ESTADOS
+============================= */
+.estado-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.estado-msg mat-icon {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.error-msg {
+  color: #c0392b;
+}
+
+.error-msg mat-icon {
+  color: #c0392b;
+}
+
+.empty-msg {
+  color: #B5A48A;
+}
+
+.empty-msg mat-icon {
+  color: #B5A48A;
+  opacity: 0.5;
+}
+
+.empty-msg p {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ============================
+   SKELETON LOADER
+============================= */
+.skeleton-card {
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  cursor: pointer;
+  background: white;
+  box-shadow: 0 2px 16px rgba(27,61,95,0.06);
 }
 
-.viaje-card img {
+.skeleton-img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  background: #e0ddd8;
 }
 
-.viaje-info {
-  padding: 15px;
+.skeleton-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: #e0ddd8;
+  width: 100%;
+}
+
+.skeleton-line.short  { width: 40%; }
+.skeleton-line.medium { width: 60%; }
+
+@keyframes shimmer {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.skeleton-anim {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ============================
+   RESPONSIVE
+============================= */
+@media (max-width: 900px) {
+  .viajes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .viajes-page {
+    padding: 40px 16px 60px;
+  }
+  .viajes-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================
+   DARK MODE
+============================= */
+:host-context(.dark-theme) {
+  background-color: #121212;
+  color: #e8eaf6;
+}
+
+:host-context(.dark-theme) .viajes-title {
+  color: #e8eaf6;
+}
+
+:host-context(.dark-theme) .viajes-header::after {
+  color: rgba(242, 237, 228, 0.04);
 }

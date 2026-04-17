@@ -1,27 +1,99 @@
-<h2>Mis Reservas</h2>
+<div class="reservas-page">
 
-@if (mensaje) {
-    <p>{{ mensaje }}</p>
-}
+  <div class="page-header">
+    <p class="section-label">Tu cuenta</p>
+    <h1 class="page-title">Mis Reservas</h1>
+    <p class="page-subtitle">Consulta y administra todos tus viajes</p>
+  </div>
 
-@if (error) {
-    <p>{{ error }}</p>
-}
-
-@for (reserva of reservas; track reserva.id_reserva) {
-    <div>
-        <h3>{{ reserva.destino }}, {{ reserva.pais }}</h3>
-        <p>Salida: {{ reserva.fecha_salida | fecha }}</p>
-        <p>Regreso: {{ reserva.fecha_regreso | fecha }}</p>
-        <p>Personas: {{ reserva.cantidad_personas }}</p>
-        <p>Estado: {{ reserva.estado }}</p>
-        <p>Total: ${{ reserva.precio }}</p>
-        @if (reserva.estado !== 'cancelada') {
-            <button (click)="cancelar(reserva.id_reserva)">Cancelar reserva</button>
-        }
+  @if (mensaje) {
+    <div class="alert alert-success">
+      <mat-icon>check_circle</mat-icon>
+      <span>{{ mensaje }}</span>
     </div>
-}
+  }
 
-@if (reservas.length === 0 && !error) {
-    <p>No tienes reservas aún.</p>
-}
+  @if (error) {
+    <div class="alert alert-error">
+      <mat-icon>error</mat-icon>
+      <span>{{ error }}</span>
+    </div>
+  }
+
+  @if (reservas.length === 0 && !error) {
+    <div class="empty-state">
+      <mat-icon class="empty-icon">luggage</mat-icon>
+      <h3>No tienes reservas aún</h3>
+      <p>Cuando reserves un viaje, aparecerá aquí</p>
+    </div>
+  }
+
+  <div class="reservas-list">
+    @for (reserva of reservas; track reserva.id_reserva) {
+      <div class="reserva-card" [class.cancelada]="reserva.estado === 'cancelada'">
+
+        <div class="card-side-accent"></div>
+
+        <div class="card-body">
+          <div class="card-top">
+            <div class="destination-info">
+              <mat-icon class="dest-icon">place</mat-icon>
+              <div>
+                <h3 class="dest-name">{{ reserva.destino }}</h3>
+                <span class="dest-country">{{ reserva.pais }}</span>
+              </div>
+            </div>
+            <span class="estado-badge estado-{{ reserva.estado }}">
+              @if (reserva.estado === 'confirmada') { <mat-icon>check_circle</mat-icon> }
+              @if (reserva.estado === 'cancelada') { <mat-icon>cancel</mat-icon> }
+              @if (reserva.estado === 'pendiente') { <mat-icon>schedule</mat-icon> }
+              {{ reserva.estado }}
+            </span>
+          </div>
+
+          <div class="card-details">
+            <div class="detail-item">
+              <mat-icon>flight_takeoff</mat-icon>
+              <div>
+                <span class="detail-label">Salida</span>
+                <span class="detail-value">{{ reserva.fecha_salida | fecha }}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <mat-icon>flight_land</mat-icon>
+              <div>
+                <span class="detail-label">Regreso</span>
+                <span class="detail-value">{{ reserva.fecha_regreso | fecha }}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <mat-icon>group</mat-icon>
+              <div>
+                <span class="detail-label">Personas</span>
+                <span class="detail-value">{{ reserva.cantidad_personas }}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <mat-icon>payments</mat-icon>
+              <div>
+                <span class="detail-label">Total</span>
+                <span class="detail-value price">${{ reserva.precio }} MXN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        @if (reserva.estado !== 'cancelada') {
+          <div class="card-actions">
+            <button class="btn-cancelar" (click)="cancelar(reserva.id_reserva)">
+              <mat-icon>close</mat-icon>
+              Cancelar reserva
+            </button>
+          </div>
+        }
+
+      </div>
+    }
+  </div>
+
+</div>

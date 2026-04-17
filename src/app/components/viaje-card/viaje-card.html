@@ -1,10 +1,60 @@
-<div class="viaje-card" (click)="onSelect()">
-  <img [src]="viaje.imagen_url" [alt]="viaje.destino" />
-  <div class="viaje-info">
-    <h3>{{ viaje.destino }}, {{ viaje.pais }}</h3>
-    <p>✈️ {{ viaje.aerolinea_nombre }}</p>
-    <p>📅 {{ viaje.fecha_salida | fecha }} — {{ viaje.fecha_regreso | fecha }}</p>
-    <p>👥 Lugares: {{ viaje.cupo_disponible }}</p>
-    <strong>${{ viaje.precio }} MXN</strong>
+<mat-card class="viaje-card" (click)="onSelect()">
+
+  <!-- Imagen -->
+  <div class="card-img-wrapper">
+    <img [src]="viaje.imagen_url" [alt]="viaje.destino" class="card-img" loading="lazy" />
+    <div class="card-badge">
+      <mat-icon>star</mat-icon>
+      Destacado
+    </div>
+    <div class="card-img-overlay"></div>
   </div>
-</div>
+
+  <!-- Cuerpo -->
+  <mat-card-content class="card-body">
+
+    <!-- Chips: aerolínea y cupo -->
+    <div class="card-meta">
+      <span class="meta-chip">
+        <mat-icon>flight_takeoff</mat-icon>
+        {{ viaje.aerolinea_nombre }}
+      </span>
+      <span class="meta-chip" [class.chip-warning]="viaje.cupo_disponible <= 5">
+        <mat-icon>group</mat-icon>
+        {{ viaje.cupo_disponible }} lugares
+      </span>
+    </div>
+
+    <!-- Destino -->
+    <h3 class="card-title">{{ viaje.destino }}, {{ viaje.pais }}</h3>
+
+    <!-- Fechas -->
+    <div class="card-dates">
+      <div class="date-item">
+        <span class="date-label">Salida</span>
+        <span class="date-value">{{ viaje.fecha_salida | fecha }}</span>
+      </div>
+      <mat-icon class="date-arrow">arrow_forward</mat-icon>
+      <div class="date-item">
+        <span class="date-label">Regreso</span>
+        <span class="date-value">{{ viaje.fecha_regreso | fecha }}</span>
+      </div>
+    </div>
+
+    <mat-divider class="card-divider"></mat-divider>
+
+    <!-- Footer: precio + botón -->
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-desde">desde</span>
+        <span class="price-amount">${{ viaje.precio | number:'1.0-0' }} MXN</span>
+      </div>
+      <button mat-flat-button class="card-btn" (click)="onSelect(); $event.stopPropagation()">
+        Ver más
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

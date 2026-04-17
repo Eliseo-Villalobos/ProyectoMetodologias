@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, AfterViewInit, NgZone, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 import { ViajeService } from '../../services/viaje';
 import { ReservaService } from '../../services/reserva';
 import { AerolineaService } from '../../services/aerolinea';
@@ -8,6 +9,17 @@ import { AuthService } from '../../services/auth';
 import { Viaje, Aerolinea } from '../../interfaces/models';
 import { FechaPipe } from '../../pipes/fecha-pipe';
 import * as L from 'leaflet';
+
+// Angular Material
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const iconDefault = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -20,7 +32,20 @@ L.Marker.prototype.options.icon = iconDefault;
 @Component({
   standalone: true,
   selector: 'app-viaje-detalle',
-  imports: [FormsModule, FechaPipe],
+  imports: [
+    FormsModule,
+    FechaPipe,
+    DecimalPipe,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './viaje-detalle.html',
   styleUrl: './viaje-detalle.css',
 })
@@ -138,7 +163,7 @@ export class ViajeDetalle implements OnInit, AfterViewInit {
     if (!this.aerolineaSeleccionada()) {
       this.error.set('Selecciona una aerolínea');
       return;
-    }
+     }
     const usuario = this.authService.getUsuario();
     this.reservaService
       .create(usuario!.id_usuario, this.viaje()!.id_viaje, this.cantidadPersonas())

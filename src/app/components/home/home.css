@@ -76,8 +76,8 @@
 }
 
 .hero-logo {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
   animation: fadeUp 0.7s ease both;

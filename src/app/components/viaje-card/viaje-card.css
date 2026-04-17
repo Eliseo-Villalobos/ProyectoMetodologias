@@ -1,17 +1,261 @@
+/* === VIAJE CARD === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+}
+
+/* ============================
+   CARD BASE
+============================= */
 .viaje-card {
-  background: white;
-  border-radius: 12px;
+  border-radius: 16px !important;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   cursor: pointer;
+  padding: 0 !important;
+  background: white !important;
+  box-shadow: 0 2px 16px rgba(27, 61, 95, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none !important;
 }
 
-.viaje-card img {
+.viaje-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(27, 61, 95, 0.16) !important;
+}
+
+/* ============================
+   IMAGEN
+============================= */
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 210px;
+}
+
+.card-img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
 }
 
-.viaje-info {
-  padding: 15px;
+.viaje-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+.card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(27, 61, 95, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* Badge */
+.card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #4EAEC5;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 5px 10px 5px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-badge mat-icon {
+  font-size: 13px;
+  width: 13px;
+  height: 13px;
+  color: #FFD166;
+}
+
+/* ============================
+   CUERPO
+============================= */
+.card-body {
+  padding: 18px 20px 20px !important;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Chips */
+.card-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #F2EDE4;
+  color: #6B5744;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.meta-chip mat-icon {
+  font-size: 13px;
+  width: 13px;
+  height: 13px;
+  color: #B5A48A;
+}
+
+/* Cupo bajo → chip naranja */
+.chip-warning {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.chip-warning mat-icon {
+  color: #e65100;
+}
+
+/* Título */
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1B3D5F;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+
+/* Fechas */
+.card-dates {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.date-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #B5A48A;
+}
+
+.date-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1B3D5F;
+}
+
+.date-arrow {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: #B5A48A;
+  margin-top: 8px;
+}
+
+/* Divider */
+.card-divider {
+  margin: 0 0 14px !important;
+  border-color: #F2EDE4 !important;
+}
+
+/* ============================
+   FOOTER
+============================= */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-price {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.price-desde {
+  font-size: 0.7rem;
+  color: #B5A48A;
+  font-weight: 400;
+}
+
+.price-amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4EAEC5;
+}
+
+/* Botón */
+.card-btn {
+  background-color: #1B3D5F !important;
+  color: white !important;
+  border-radius: 50px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s, transform 0.2s !important;
+}
+
+.card-btn mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.card-btn:hover {
+  background-color: #4EAEC5 !important;
+}
+
+.card-btn:hover mat-icon {
+  transform: translateX(3px);
+}
+
+/* ============================
+   DARK MODE
+============================= */
+:host-context(.dark-theme) .viaje-card {
+  background: #1e1e2f !important;
+}
+
+:host-context(.dark-theme) .card-title {
+  color: #e8eaf6;
+}
+
+:host-context(.dark-theme) .date-value {
+  color: #e8eaf6;
+}
+
+:host-context(.dark-theme) .meta-chip {
+  background: #2a2a3f;
+  color: #B5A48A;
 }
