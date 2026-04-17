@@ -16,15 +16,15 @@ export class PerfilHeader {
   mostrarAvatares = signal(false);
 
   avatares = [
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Felix',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Milo',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Luna',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Max',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Sara',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Leo',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe',
-    'https://api.dicebear.com/7.x/adventurer/svg?seed=Kai',
+    'assets/avatares/avatar1.png',
+    'assets/avatares/avatar2.png',
+    'assets/avatares/avatar3.png',
+    'assets/avatares/avatar4.png',
+    'assets/avatares/avatar5.png',
+    'assets/avatares/avatar6.png',
+    'assets/avatares/avatar7.png',
+    'assets/avatares/avatar8.png',
+    'assets/avatares/avatar9.png',
   ];
 
   getUsuario() {

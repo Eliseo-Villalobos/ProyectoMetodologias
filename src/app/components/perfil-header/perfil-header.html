@@ -9,8 +9,8 @@
     @if (mostrarMenu()) {
       <div class="perfil-menu">
         <p class="perfil-email">{{ getUsuario()?.email }}</p>
-        <button (click)="mostrarAvatares.set(true)">🖼️ Cambiar avatar</button>
-        <button (click)="cerrarSesion()">🚪 Cerrar sesión</button>
+        <button (click)="mostrarAvatares.set(true)">Cambiar avatar</button>
+        <button (click)="cerrarSesion()">Cerrar sesión</button>
 
         @if (mostrarAvatares()) {
           <div class="avatares-grid">

@@ -35,7 +35,16 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #1B3D5F 0%, #2a6080 40%, #4EAEC5 100%);
+  background: #0f1c2e; 
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero-bg {
@@ -54,7 +63,7 @@
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   text-align: center;
   padding: 40px 24px;
   max-width: 680px;
@@ -93,14 +102,14 @@
 }
 
 .hero-subtitle {
-  color: rgba(242, 237, 228, 0.75);
+  color: rgb(252, 248, 242);
   font-size: 1.1rem;
   font-weight: 300;
   margin: 0 0 32px;
 }
 
 .hero-welcome {
-  color: rgba(242, 237, 228, 0.9);
+  color: rgb(255, 255, 255);
   margin-bottom: 24px;
   font-size: 1.05rem;
 }
@@ -671,11 +680,14 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
+  bottom: 0;
+  background: 
+    linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 25%),
+    linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
   z-index: 3;
   pointer-events: none;
 }
+
 /* ===== MODO OSCURO ===== */
 body.dark-theme {
   --mat-sys-surface: #121212 !important;
@@ -705,4 +717,35 @@ body.dark-theme h1,
 body.dark-theme h2,
 body.dark-theme h3 {
   color: #e8eaf6;
+}
+
+.dest-img {
+  position: relative;
+  overflow: hidden;
+}
+
+/* imagen normal visible siempre */
+.dest-base-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* overlay encima pero oculto */
+.dest-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* hover activa GIF */
+.hover-card:hover .dest-overlay {
+  opacity: 1;
+}
+
+.hover-card:hover .dest-base-img {
+  transform: scale(1.05);
 }

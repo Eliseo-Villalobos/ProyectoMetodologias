@@ -2,12 +2,13 @@ import { Component, inject, AfterViewInit, ElementRef } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [RouterLink, MatButtonModule],
+  imports: [RouterLink, MatButtonModule, MatIconModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -19,6 +20,25 @@ export class Home implements AfterViewInit {
   private currentIndex = 0;
 
   ngAfterViewInit() {
+    const video = this.el.nativeElement.querySelector('.hero-video') as HTMLVideoElement;
+    if (video) {
+      video.muted = true;
+      video.volume = 0;
+    }
+
+    const reveals = this.el.nativeElement.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry: any) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach((el: any) => observer.observe(el));
+
+    // ===== CAROUSEL ===== (va después, con su return propio)
     const carousel = this.el.nativeElement.querySelector('#categories-carousel');
     const btnPrev = this.el.nativeElement.querySelector('#btn-prev');
     const btnNext = this.el.nativeElement.querySelector('#btn-next');
@@ -32,25 +52,6 @@ export class Home implements AfterViewInit {
       const slideW = slides[0].offsetWidth + 16;
       carousel.style.transform = `translateX(-${this.currentIndex * slideW}px)`;
     };
-
-    // ===== SCROLL ANIMATION =====
-    const reveals = this.el.nativeElement.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry: any) => {
-
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        } else {
-          entry.target.classList.remove('active'); // 👈 vuelve a ocultarse
-        }
-
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    reveals.forEach((el: any) => observer.observe(el));
 
     btnNext.addEventListener('click', () => slide(1));
     btnPrev.addEventListener('click', () => slide(-1));

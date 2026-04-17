@@ -1,5 +1,8 @@
 <section class="hero">
   <div class="hero-bg">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="assets/fondo.mp4" type="video/mp4" />
+    </video>
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -13,7 +16,7 @@
     <p class="hero-subtitle">Los mejores destinos de México al mejor precio</p>
 
     @if (estaLogueado()) {
-      <p class="hero-welcome">¡Bienvenido de nuevo, <strong>{{ getUsuario()?.nombre }}</strong>! 🎉</p>
+      <p class="hero-welcome">¡Bienvenido de nuevo, <strong>{{ getUsuario()?.nombre }}</strong>!</p>
       <button class="btn-primary" (click)="irAViajes()">
         <span>Ver destinos</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -34,55 +37,6 @@
   </div>
 </section>
 
-<section class="section-categories">
-  <div class="section-header">
-    <div class="section-header-left">
-      <p class="section-label">Explora por tipo</p>
-      <h2 class="section-title">Elige tu próxima aventura</h2>
-    </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="btn-prev" aria-label="Anterior">&#8592;</button>
-      <button class="carousel-btn" id="btn-next" aria-label="Siguiente">&#8594;</button>
-    </div>
-  </div>
-
-  <div class="categories-carousel-wrapper">
-    <div class="categories-carousel" id="categories-carousel">
-
-      <div class="cat-slide float-1">
-        <div class="cat-img cat-playa"></div>
-        <span class="cat-label">Playa</span>
-      </div>
-
-      <div class="cat-slide float-2">
-        <div class="cat-img cat-resort"></div>
-        <span class="cat-label">Resort</span>
-      </div>
-
-      <div class="cat-slide float-3">
-        <div class="cat-img cat-villas"></div>
-        <span class="cat-label">Villas</span>
-      </div>
-
-      <div class="cat-slide float-4">
-        <div class="cat-img cat-ciudad"></div>
-        <span class="cat-label">Ciudad</span>
-      </div>
-
-      <div class="cat-slide float-5">
-        <div class="cat-img cat-naturaleza"></div>
-        <span class="cat-label">Naturaleza</span>
-      </div>
-
-      <div class="cat-slide float-6">
-        <div class="cat-img cat-aventura"></div>
-        <span class="cat-label">Aventura</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- Destinos destacados -->
 <section class="section-destinations">
   <div class="section-header">
@@ -96,7 +50,7 @@
     <!-- Cancún -->
     <div class="dest-card dest-featured hover-card">
       <div class="dest-img dest-cancun">
-
+        <img class="dest-base-img" src="assets/cancun.jpg" alt="Cancún" />
         <div class="dest-overlay">
           <img src="assets/animaciones/cancun.gif" alt="animacion" />
         </div>
@@ -112,7 +66,7 @@
     <!-- Los Cabos -->
     <div class="dest-card hover-card">
       <div class="dest-img dest-cabos">
-
+        <img class="dest-base-img" src="assets/cabos.jpg" alt="Los Cabos" />
         <div class="dest-overlay">
           <img src="assets/animaciones/cabos.gif" alt="animacion" />
         </div>
@@ -128,7 +82,7 @@
     <!-- Puerto Vallarta -->
     <div class="dest-card hover-card">
       <div class="dest-img dest-vallarta">
-
+        <img class="dest-base-img" src="assets/vallarta.jpg" alt="Puerto Vallarta" />
         <div class="dest-overlay">
           <img src="assets/animaciones/puerto.gif" alt="animacion" />
         </div>
@@ -144,7 +98,7 @@
     <!-- Oaxaca -->
     <div class="dest-card hover-card">
       <div class="dest-img dest-oaxaca">
-
+        <img class="dest-base-img" src="assets/oaxaca.jpg" alt="Oaxaca" />
         <div class="dest-overlay">
           <img src="assets/animaciones/oaxaca.gif" alt="animacion" />
         </div>
@@ -175,7 +129,7 @@
     <div class="features-cards">
 
       <div class="feature-item reveal">
-        <div class="feature-icon">💰</div>
+        <div class="feature-icon"><mat-icon>payments</mat-icon></div>
         <div>
           <h4>Mejores precios</h4>
           <p>Paquetes todo incluido desde $6,000 MXN</p>
@@ -183,7 +137,7 @@
       </div>
 
       <div class="feature-item reveal">
-        <div class="feature-icon">🛡️</div>
+        <div class="feature-icon"><mat-icon>security</mat-icon></div>
         <div>
           <h4>Reservas garantizadas</h4>
           <p>Tu reserva está asegurada desde el primer momento</p>
@@ -191,7 +145,7 @@
       </div>
 
       <div class="feature-item reveal">
-        <div class="feature-icon">📱</div>
+        <div class="feature-icon"><mat-icon>smartphone</mat-icon></div>
         <div>
           <h4>Fácil y rápido</h4>
           <p>Reserva en minutos desde cualquier dispositivo</p>
@@ -199,7 +153,7 @@
       </div>
 
       <div class="feature-item reveal">
-        <div class="feature-icon">🧳</div>
+        <div class="feature-icon"><mat-icon>luggage</mat-icon></div>
         <div>
           <h4>Soporte 24/7</h4>
           <p>Estamos contigo antes, durante y después de tu viaje</p>
