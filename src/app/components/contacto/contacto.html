@@ -1,37 +1,44 @@
+<!-- Overlay para cerrar al hacer clic fuera -->
+<div class="overlay" (click)="cerrar.emit()"></div>
+
 <div class="chat-box">
 
-  <h3>Contacto</h3>
+  <div class="chat-header">
+    <h3>Contáctanos</h3>
+    <button class="close-btn" (click)="cerrar.emit()">✕</button>
+  </div>
 
   <form #formContacto="ngForm" (ngSubmit)="enviar(formContacto)">
 
-    <input 
-      name="nombre" 
-      [(ngModel)]="nombre" 
-      #nom="ngModel" 
-      required 
+    <input
+      name="nombre"
+      [(ngModel)]="nombre"
+      #nom="ngModel"
+      required
       placeholder="Nombre"
     >
     @if (nom.invalid && nom.touched) {
       <p>Requerido</p>
     }
 
-    <input 
-      name="correo" 
-      [(ngModel)]="correo" 
-      #cor="ngModel" 
-      required 
-      email 
+    <input
+      name="correo"
+      [(ngModel)]="correo"
+      #cor="ngModel"
+      required
+      email
       placeholder="Correo"
     >
     @if (cor.invalid && cor.touched) {
       <p>Correo inválido</p>
     }
 
-    <textarea 
-      name="mensaje" 
-      [(ngModel)]="mensaje" 
-      #msg="ngModel" 
+    <textarea
+      name="mensaje"
+      [(ngModel)]="mensaje"
+      #msg="ngModel"
       required
+      placeholder="Escribe tu mensaje..."
     ></textarea>
     @if (msg.invalid && msg.touched) {
       <p>Mensaje requerido</p>

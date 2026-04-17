@@ -1,37 +1,202 @@
-<div class="home-hero">
+<section class="hero">
+  <div class="hero-bg">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="assets/fondo.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="hero-content">
-    <h1>Descubre el mundo ✈️</h1>
-    <p>Los mejores destinos de México al mejor precio</p>
+    <div class="hero-badge">
+      <img src="assets/pingulogo.png" alt="Pingu Tours" class="hero-logo" />
+    </div>
+    <h1 class="hero-title">
+      Explora el mundo<br />
+      <span class="hero-title-accent">con Pingu Tours</span>
+    </h1>
+    <p class="hero-subtitle">Los mejores destinos de México al mejor precio</p>
 
     @if (estaLogueado()) {
-      <h3>¡Bienvenido de nuevo, {{ getUsuario()?.nombre }}!</h3>
-      <button (click)="irAViajes()">Ver destinos disponibles</button>
+      <p class="hero-welcome">¡Bienvenido de nuevo, <strong>{{ getUsuario()?.nombre }}</strong>!</p>
+      <button class="btn-primary" (click)="irAViajes()">
+        <span>Ver destinos</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
     } @else {
-      <p>Inicia sesión para reservar tu próxima aventura</p>
-      <a routerLink="/register">Comenzar ahora</a>
+      <div class="hero-actions">
+        <a routerLink="/register" class="btn-primary">
+          Comenzar ahora
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a routerLink="/login" class="btn-ghost">Iniciar sesión</a>
+      </div>
     }
   </div>
-</div>
 
-<div class="home-info">
-  <div class="info-card">
-    <span>🏖️</span>
-    <h3>Destinos increíbles</h3>
-    <p>Cancún, Los Cabos, Puerto Vallarta y más</p>
+  <div class="hero-scroll-hint">
+    <div class="scroll-dot"></div>
   </div>
-  <div class="info-card">
-    <span>💰</span>
-    <h3>Mejores precios</h3>
-    <p>Paquetes desde $6,000 MXN todo incluido</p>
+</section>
+
+<!-- Destinos destacados -->
+<section class="section-destinations">
+  <div class="section-header">
+    <p class="section-label">Más populares</p>
+    <h2 class="section-title">Destinos que te encantarán</h2>
+    <a routerLink="/viajes" class="section-link">Ver todos →</a>
   </div>
-  <div class="info-card">
-    <span>🛡️</span>
-    <h3>Viaja seguro</h3>
-    <p>Reservas confirmadas y garantizadas</p>
+
+  <div class="destinations-grid">
+
+    <!-- Cancún -->
+    <div class="dest-card dest-featured hover-card">
+      <div class="dest-img dest-cancun">
+        <img class="dest-base-img" src="assets/cancun.jpg" alt="Cancún" />
+        <div class="dest-overlay">
+          <img src="assets/animaciones/cancun.gif" alt="animacion" />
+        </div>
+
+      </div>
+      <div class="dest-info">
+        <h3>Cancún</h3>
+        <p>Quintana Roo</p>
+        <span class="dest-price">desde $8,500 MXN</span>
+      </div>
+    </div>
+
+    <!-- Los Cabos -->
+    <div class="dest-card hover-card">
+      <div class="dest-img dest-cabos">
+        <img class="dest-base-img" src="assets/cabos.jpg" alt="Los Cabos" />
+        <div class="dest-overlay">
+          <img src="assets/animaciones/cabos.gif" alt="animacion" />
+        </div>
+
+      </div>
+      <div class="dest-info">
+        <h3>Los Cabos</h3>
+        <p>Baja California Sur</p>
+        <span class="dest-price">desde $9,200 MXN</span>
+      </div>
+    </div>
+
+    <!-- Puerto Vallarta -->
+    <div class="dest-card hover-card">
+      <div class="dest-img dest-vallarta">
+        <img class="dest-base-img" src="assets/vallarta.jpg" alt="Puerto Vallarta" />
+        <div class="dest-overlay">
+          <img src="assets/animaciones/puerto.gif" alt="animacion" />
+        </div>
+
+      </div>
+      <div class="dest-info">
+        <h3>Puerto Vallarta</h3>
+        <p>Jalisco</p>
+        <span class="dest-price">desde $6,000 MXN</span>
+      </div>
+    </div>
+
+    <!-- Oaxaca -->
+    <div class="dest-card hover-card">
+      <div class="dest-img dest-oaxaca">
+        <img class="dest-base-img" src="assets/oaxaca.jpg" alt="Oaxaca" />
+        <div class="dest-overlay">
+          <img src="assets/animaciones/oaxaca.gif" alt="animacion" />
+        </div>
+
+      </div>
+      <div class="dest-info">
+        <h3>Oaxaca</h3>
+        <p>Oaxaca</p>
+        <span class="dest-price">desde $5,500 MXN</span>
+      </div>
+    </div>
+
   </div>
-  <div class="info-card">
-    <span>📱</span>
-    <h3>Fácil y rápido</h3>
-    <p>Reserva en minutos desde cualquier dispositivo</p>
+</section>
+
+<!-- Por qué elegirnos -->
+<section class="section-features">
+  <div class="features-inner">
+    <div class="features-text">
+      <p class="section-label">¿Por qué Pingu Tours?</p>
+      <h2 class="section-title">Viaja sin preocupaciones</h2>
+      <p class="features-desc">
+        Somos tu agencia de confianza para explorar los mejores destinos de México. 
+        Desde la planeación hasta el regreso a casa, te acompañamos en cada paso.
+      </p>
+      <a routerLink="/viajes" class="btn-primary">Explorar destinos</a>
+    </div>
+    <div class="features-cards">
+
+      <div class="feature-item reveal">
+        <div class="feature-icon"><mat-icon>payments</mat-icon></div>
+        <div>
+          <h4>Mejores precios</h4>
+          <p>Paquetes todo incluido desde $6,000 MXN</p>
+        </div>
+      </div>
+
+      <div class="feature-item reveal">
+        <div class="feature-icon"><mat-icon>security</mat-icon></div>
+        <div>
+          <h4>Reservas garantizadas</h4>
+          <p>Tu reserva está asegurada desde el primer momento</p>
+        </div>
+      </div>
+
+      <div class="feature-item reveal">
+        <div class="feature-icon"><mat-icon>smartphone</mat-icon></div>
+        <div>
+          <h4>Fácil y rápido</h4>
+          <p>Reserva en minutos desde cualquier dispositivo</p>
+        </div>
+      </div>
+
+      <div class="feature-item reveal">
+        <div class="feature-icon"><mat-icon>luggage</mat-icon></div>
+        <div>
+          <h4>Soporte 24/7</h4>
+          <p>Estamos contigo antes, durante y después de tu viaje</p>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
+
+<!-- Carousel script (Angular ngAfterViewInit equivalent usando defer) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('categories-carousel');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    if (!carousel || !btnPrev || !btnNext) return;
+
+    let currentIndex = 0;
+    const getVisible = () => window.innerWidth < 600 ? 2 : window.innerWidth < 900 ? 3 : 4;
+
+    function slide(dir) {
+      const slides = carousel.querySelectorAll('.cat-slide');
+      const total = slides.length;
+      const visible = getVisible();
+      const max = total - visible;
+      currentIndex = Math.max(0, Math.min(currentIndex + dir, max));
+      const slideW = slides[0].offsetWidth + 16;
+      carousel.style.transform = `translateX(-${currentIndex * slideW}px)`;
+    }
+
+    btnNext.addEventListener('click', () => slide(1));
+    btnPrev.addEventListener('click', () => slide(-1));
+  });
+</script>
+
+<!-- CTA final -->
+<section class="section-cta">
+  <div class="cta-inner">
+    <img src="assets/pingutours.png" alt="Pingu Tours" class="cta-logo" />
+    <h2>¿Listo para despegar?</h2>
+    <p>Crea tu cuenta y descubre cientos de destinos esperándote</p>
+    <a routerLink="/register" class="btn-primary btn-large">Regístrate gratis</a>
+  </div>
+</section>
+

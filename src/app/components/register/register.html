@@ -1,48 +1,77 @@
-<h2>Registro</h2>
+<div class="register-card">
 
-<form [formGroup]="form" (ngSubmit)="submit()">
-
-  <div>
-    <label>Nombre</label>
-    <input type="text" formControlName="nombre" placeholder="Tu nombre completo" />
-    @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
-      <span>Mínimo 3 caracteres</span>
-    }
-  </div>
+  <!-- Panel izquierdo -->
+  <div class="register-left">
+  <img src="assets/reg.gif" class="bg-gif" alt="" />
 
   <div>
-    <label>Email</label>
-    <input type="email" formControlName="email" placeholder="correo@ejemplo.com" />
-    @if (form.get('email')?.invalid && form.get('email')?.touched) {
-      <span>Email inválido</span>
-    }
+    <h1>Únete a Pingu Tours</h1>
+    <p>Crea tu cuenta y empieza a explorar los mejores destinos del mundo.</p>
+  </div>
+  <div class="dots">
+    <span></span>
+    <span class="active"></span>
+    <span></span>
+  </div>
+</div>
+
+  <!-- Panel derecho -->
+  <div class="register-right">
+    <h2>Crear Cuenta</h2>
+    <p class="subtitle">Completa tus datos para registrarte</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" formControlName="nombre" placeholder="Tu nombre completo" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput type="text" formControlName="telefono" placeholder="10 dígitos" />
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+
+      @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+        <span class="error-text">Mínimo 3 caracteres</span>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      @if (form.get('email')?.invalid && form.get('email')?.touched) {
+        <span class="error-text">Email inválido</span>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <span class="error-text">Mínimo 6 caracteres</span>
+      }
+
+      @if (mensaje) {
+        <p class="mensaje">{{ mensaje }}</p>
+      }
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+
+      <button mat-raised-button class="submit-btn" type="submit">Registrarse</button>
+
+    </form>
+
+    <p class="login-link">
+      ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a>
+    </p>
   </div>
 
-  <div>
-    <label>Password</label>
-    <input type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
-    @if (form.get('password')?.invalid && form.get('password')?.touched) {
-      <span>Mínimo 6 caracteres</span>
-    }
-  </div>
-
-  <div>
-    <label>Teléfono</label>
-    <input type="text" formControlName="telefono" placeholder="10 dígitos" />
-    @if (form.get('telefono')?.invalid && form.get('telefono')?.touched) {
-      <span>Teléfono inválido</span>
-    }
-  </div>
-
-  @if (mensaje) {
-    <p>{{ mensaje }}</p>
-  }
-
-  @if (error) {
-    <p>{{ error }}</p>
-  }
-
-  <button type="submit">Registrarse</button>
-  <a routerLink="/login">¿Ya tienes cuenta? Inicia sesión</a>
-
-</form>
+</div>

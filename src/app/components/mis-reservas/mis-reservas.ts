@@ -4,11 +4,13 @@ import { ReservaService } from '../../services/reserva';
 import { AuthService } from '../../services/auth';
 import { Reserva } from '../../interfaces/models';
 import { FechaPipe } from '../../pipes/fecha-pipe';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   standalone: true,
   selector: 'app-mis-reservas',
-  imports: [FechaPipe],
+  imports: [FechaPipe, MatIconModule],
   templateUrl: './mis-reservas.html',
   styleUrl: './mis-reservas.css',
 })

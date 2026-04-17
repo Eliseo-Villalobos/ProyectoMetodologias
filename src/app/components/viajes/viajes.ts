@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 import { ViajeService } from '../../services/viaje';
 import { Viaje } from '../../interfaces/models';
 import { ViajeCard } from '../viaje-card/viaje-card';
@@ -7,7 +8,7 @@ import { ViajeCard } from '../viaje-card/viaje-card';
 @Component({
   standalone: true,
   selector: 'app-viajes',
-  imports: [ViajeCard],
+  imports: [ViajeCard, MatIconModule],
   templateUrl: './viajes.html',
   styleUrl: './viajes.css',
 })

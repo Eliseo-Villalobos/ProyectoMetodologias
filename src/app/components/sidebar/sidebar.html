@@ -1,22 +1,32 @@
-<button class="toggle-btn" (click)="toggle()">☰</button>
+<button class="toggle-btn" (click)="toggle()" [class.hidden]="visible()"><mat-icon>menu</mat-icon></button>
+<!-- Overlay -->
+<div class="overlay" [class.active]="visible()" (click)="visible.set(false)"></div>
 
+<!-- Sidebar -->
 <div class="sidebar" [class.sidebar-hidden]="!visible()">
+  <br>
   <div class="sidebar-header">
-    <h2>✈️ Viajes GN</h2>
+    <h2>Pingu Tours</h2>
   </div>
 
   <nav class="sidebar-nav">
-    <a routerLink="/home" routerLinkActive="active">🏠 Inicio</a>
-    <a routerLink="/viajes" routerLinkActive="active">🌍 Viajes</a>
+    
+    <button mat-icon-button (click)="temaService.toggleTheme()">
+    <mat-icon>
+      {{ temaService.isDarkMode() ? 'light_mode' : 'dark_mode' }}
+    </mat-icon>
+  </button>
+    <a routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon> Inicio</a>
+    <a routerLink="/viajes" routerLinkActive="active"><mat-icon>public</mat-icon> Viajes</a>
 
     @if (estaLogueado()) {
-      <a routerLink="/mis-reservas" routerLinkActive="active">🎫 Mis Reservas</a>
+      <a routerLink="/mis-reservas"><mat-icon>confirmation_number</mat-icon> Mis Reservas</a>
     }
   </nav>
 
   <div class="sidebar-footer">
     @if (estaLogueado()) {
-      <p>👤 {{ getUsuario()?.nombre }}</p>
+      <p><mat-icon>person</mat-icon> {{ getUsuario()?.nombre }}</p>
       <button (click)="cerrarSesion()">Cerrar sesión</button>
     } @else {
       <a routerLink="/login">Iniciar sesión</a>
