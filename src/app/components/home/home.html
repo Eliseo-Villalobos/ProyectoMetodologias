@@ -1,37 +1,127 @@
-<div class="home-hero">
-  <div class="hero-content">
-    <h1>Descubre el mundo ✈️</h1>
-    <p>Los mejores destinos de México al mejor precio</p>
+<div class="home-container">
+  
+  <header class="navbar">
+    <div class="logo">PROYCONS</div>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
+      <a routerLink="/proyectos" routerLinkActive="active">PROYECTOS</a>
+      <a routerLink="/servicios" routerLinkActive="active">SERVICIOS</a>
+      <a routerLink="/nosotros" routerLinkActive="active">NOSOTROS</a>
+      <a routerLink="/contacto" routerLinkActive="active">CONTACTO</a>
+    </nav>
+  </header>
 
-    @if (estaLogueado()) {
-      <h3>¡Bienvenido de nuevo, {{ getUsuario()?.nombre }}!</h3>
-      <button (click)="irAViajes()">Ver destinos disponibles</button>
-    } @else {
-      <p>Inicia sesión para reservar tu próxima aventura</p>
-      <a routerLink="/register">Comenzar ahora</a>
-    }
-  </div>
-</div>
+  <section class="hero-section">
+    <div class="hero-left">
+      <p class="subtitle">IRAPUATO, GUANAJUATO · CONSTRUCCIÓN DE CALIDAD</p>
+      <h1>Construimos con<br><span class="highlight">visión y precisión</span></h1>
+      <p class="description">
+        Diseño arquitectónico, construcción y remodelación para proyectos residenciales y comerciales. 
+        Más de 12 años de experiencia avalan cada obra.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" (click)="scrollToSection('proyectos')">VER PROYECTOS</button>
+        <button class="btn-secondary" routerLink="/contacto">CONTÁCTANOS</button>
+      </div>
+    </div>
+    
+    <div class="hero-right-grid">
+      <div class="grid-item item-residential">
+        <div class="overlay-grid"></div>
+        <div class="grid-content">
+          <span>Casa residencial</span>
+          <i class="material-icons">home</i>
+        </div>
+      </div>
+      <div class="grid-item item-render">
+        <div class="overlay-grid"></div>
+        <div class="grid-content">
+          <span>Render 3D</span>
+          <i class="material-icons">layers</i>
+        </div>
+      </div>
+      <div class="grid-item item-blueprint">
+        <div class="overlay-grid"></div>
+        <div class="grid-content">
+          <span>Plano arquitectónico</span>
+          <i class="material-icons">architecture</i>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="home-info">
-  <div class="info-card">
-    <span>🏖️</span>
-    <h3>Destinos increíbles</h3>
-    <p>Cancún, Los Cabos, Puerto Vallarta y más</p>
-  </div>
-  <div class="info-card">
-    <span>💰</span>
-    <h3>Mejores precios</h3>
-    <p>Paquetes desde $6,000 MXN todo incluido</p>
-  </div>
-  <div class="info-card">
-    <span>🛡️</span>
-    <h3>Viaja seguro</h3>
-    <p>Reservas confirmadas y garantizadas</p>
-  </div>
-  <div class="info-card">
-    <span>📱</span>
-    <h3>Fácil y rápido</h3>
-    <p>Reserva en minutos desde cualquier dispositivo</p>
-  </div>
+  <section class="stats-bar">
+    <div class="stat-card">
+      <h2>150+</h2>
+      <p>PROYECTOS TERMINADOS</p>
+    </div>
+    <div class="stat-card">
+      <h2>12</h2>
+      <p>AÑOS DE EXPERIENCIA</p>
+    </div>
+    <div class="stat-card">
+      <h2>100%</h2>
+      <p>PROYECTOS SUPERVISADOS</p>
+    </div>
+    <div class="stat-card">
+      <h2>6</h2>
+      <p>SERVICIOS ESPECIALIZADOS</p>
+    </div>
+  </section>
+
+  <section id="proyectos" class="projects-section">
+    <div class="section-header">
+      <h2>Proyectos destacados</h2>
+      
+      <button class="btn-outline" routerLink="/proyectos">VER TODOS</button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image-placeholder img-res">
+          <span class="badge badge-res">RESIDENCIAL</span>
+          <i class="material-icons">villa</i>
+        </div>
+        <div class="project-info">
+          <p class="project-meta">CASA · IRAPUATO</p>
+          <h3>Casa Moderna Las Palmas</h3>
+          <p class="project-location">Col. Las Palmas, Irapuato</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder img-com">
+          <span class="badge badge-com">COMERCIAL</span>
+          <i class="material-icons">corporate_fare</i>
+        </div>
+        <div class="project-info">
+          <p class="project-meta">EDIFICIO · IRAPUATO</p>
+          <h3>Edificio Corporativo Centro</h3>
+          <p class="project-location">Centro Histórico, Irapuato</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder img-rem">
+          <span class="badge badge-rem">REMODELACIÓN</span>
+          <i class="material-icons">foundation</i>
+        </div>
+        <div class="project-info">
+          <p class="project-meta">REMODELACIÓN · SILAO</p>
+          <h3>Villa Silao — Remodelación</h3>
+          <p class="project-location">Silao de la Victoria, Gto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <p class="cta-subtitle">¿TIENES UN PROYECTO EN MENTE?</p>
+    <h2>Hablemos sobre tu obra</h2>
+    <p class="cta-description">
+      Desde diseño hasta entrega. Te acompañamos en cada etapa de tu construcción con profesionalismo y compromiso.
+    </p>
+    <button class="btn-cta" routerLink="/contacto">SOLICITAR INFORMACIÓN</button>
+  </section>
+
 </div>

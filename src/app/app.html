@@ -1,15 +1,22 @@
-<div class="app-layout">
-  <app-sidebar (visibleChange)="onSidebarChange($event)" />
-  <main class="main-content" [class.content-expanded]="!sidebarVisible()">
-    <app-perfil-header />
-    <router-outlet />
-  </main>
-</div>
+<main class="main-content">
+  <router-outlet />
+</main>
 
-<footer>
-  <button (click)="toggleChat()">Contáctanos</button>
+<footer class="main-footer">
+  <div class="footer-left">
+    <span class="logo">PROYCONS</span>
+  </div>
+  <div class="footer-center">
+    <p>Irapuato, Guanajuato, México</p>
+    <p class="copyright">© 2026 PROYCONS - Todos los derechos reservados</p>
+  </div>
+  <div class="footer-right">
+    <a href="#">INSTAGRAM</a>
+    <a href="#">FACEBOOK</a>
+    <a href="#">LINKEDIN</a>
+  </div>
 </footer>
 
 @if (mostrarChat) {
-  <app-contacto></app-contacto>
+  <app-contacto (cerrar)="mostrarChat = false" />
 }

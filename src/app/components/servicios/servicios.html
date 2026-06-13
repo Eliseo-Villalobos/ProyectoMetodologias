@@ -1,0 +1,54 @@
+<div class="servicios-container">
+  
+  <header class="navbar">
+    <div class="logo">PROYCONS</div>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
+      <a routerLink="/proyectos" routerLinkActive="active">PROYECTOS</a>
+      <a routerLink="/servicios" routerLinkActive="active">SERVICIOS</a>
+      <a routerLink="/home" fragment="nosotros">NOSOTROS</a>
+      <a routerLink="/contacto" routerLinkActive="active">CONTACTO</a>
+    </nav>
+  </header>
+
+  <main class="servicios-content">
+    <div class="title-section">
+      <h1>Nuestros servicios</h1>
+      <p class="subtitle">Ofrecemos soluciones integrales en construcción y diseño para proyectos residenciales y comerciales</p>
+    </div>
+
+    <div class="services-grid">
+      @for (servicio of listaServicios; track servicio.titulo) {
+        <div class="service-card">
+          <div class="icon-box">
+            <i class="material-icons">{{ servicio.icono }}</i>
+          </div>
+          <h3>{{ servicio.titulo }}</h3>
+          <p class="service-description">{{ servicio.descripcion }}</p>
+        </div>
+      }
+    </div>
+  </main>
+
+  <section class="why-us-section">
+    <div class="why-us-content">
+      <h2>¿Por qué elegirnos?</h2>
+      <div class="why-us-divider"></div>
+      
+      <div class="values-grid">
+        @for (valor of listaValores; track valor.titulo) {
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="material-icons">{{ valor.icono }}</i>
+            </div>
+            <h3>{{ valor.titulo }}</h3>
+            <p>{{ valor.descripcion }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  
+
+</div>

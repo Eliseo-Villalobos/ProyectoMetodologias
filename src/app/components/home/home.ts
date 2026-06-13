@@ -1,27 +1,23 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth';
-
+import { Router, RouterLink, RouterLinkActive } from '@angular/router'; 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive], 
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
-  private authService = inject(AuthService);
   private router = inject(Router);
 
-  estaLogueado() {
-    return this.authService.estaLogueado();
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  getUsuario() {
-    return this.authService.getUsuario();
-  }
-
-  irAViajes() {
-    this.router.navigate(['/viajes']);
+  irAContacto() {
+    this.router.navigate(['/contacto']);
   }
 }
