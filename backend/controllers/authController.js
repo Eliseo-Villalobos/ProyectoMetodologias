@@ -1,65 +1,52 @@
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Usuario = require('../models/usuarioModel');
+const db = require('../config/db');
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
+  const { usuario, contrasena } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ mensaje: 'Faltan email o password' });
+  if (!usuario || !contrasena) {
+    return res.status(400).json({ mensaje: 'Faltan usuario o contraseña' });
+  }
+
+  try {
+    // Buscar administrador por usuario
+    const [rows] = await db.execute(
+      'SELECT * FROM administrador WHERE usuario = ?',
+      [usuario]
+    );
+
+    const admin = rows[0];
+
+    if (!admin) {
+      return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
     }
 
-    try {
-        const usuario = await Usuario.findByEmail(email);
-        if (!usuario) {
-            return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
-        }
+    // Comparar contraseña en texto plano
+    if (contrasena !== admin.contrasena) {
+      return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
+    }
 
-        const passwordValido = await bcrypt.compare(password, usuario.password);
-        if (!passwordValido) {
-            return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
-        }
-
-        const token = jwt.sign(
-        { id_usuario: usuario.id_usuario, email: usuario.email },
-        process.env.JWT_SECRET,
-        { expiresIn: '8h' }
-        );
+    // Generar token JWT
+    const token = jwt.sign(
+      { id_admin: admin.id_admin, usuario: admin.usuario, rol: 'admin' },
+      process.env.JWT_SECRET,
+      { expiresIn: '8h' }
+    );
 
     res.json({
-        mensaje: 'Login exitoso',
-        token,
-        usuario: {
-            id_usuario: usuario.id_usuario,
-            nombre: usuario.nombre,
-            email: usuario.email
-        }
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ mensaje: 'Error en el servidor' });
-    }
-};
+      mensaje: 'Login exitoso',
+      token,
+      admin: {
+        id_admin: admin.id_admin,
+        usuario: admin.usuario,
+        rol: 'admin'
+      }
+    });
 
-const register = async (req, res) => {
-    const { nombre, email, password, telefono } = req.body;
-
-    try {
-        const usuarioExiste = await Usuario.findByEmail(email);
-        if (usuarioExiste) {
-            return res.status(400).json({ mensaje: 'El email ya está registrado' });
-        }
-
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    const idNuevo = await Usuario.create(nombre, email, passwordHash, telefono);
-
-    res.status(201).json({ mensaje: 'Usuario registrado con éxito', id_usuario: idNuevo });
-    } catch (error) {
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ mensaje: 'Error al registrar usuario' });
-    }
+    res.status(500).json({ mensaje: 'Error en el servidor' });
+  }
 };
 
-module.exports = { login, register };
+module.exports = { login };

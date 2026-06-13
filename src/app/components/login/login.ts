@@ -31,28 +31,30 @@ export class Login {
   mensaje = '';
   error = '';
 
+  // Cambiamos email/password por usuario/contrasena
   form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    usuario: ['', [Validators.required]],
+    contrasena: ['', [Validators.required, Validators.minLength(4)]],
   });
 
   submit() {
     if (this.form.invalid) {
-      this.error = 'Por favor completa todos los campos correctamente';
+      this.error = 'Por favor completa todos los campos';
       return;
     }
 
-    const { email, password } = this.form.value;
+    const { usuario, contrasena } = this.form.value;
 
-    this.authService.login(email!, password!).subscribe({
+    this.authService.login(usuario!, contrasena!).subscribe({
       next: (res) => {
         this.authService.guardarSesion(res);
         this.mensaje = 'Login exitoso, redirigiendo...';
         this.error = '';
-        setTimeout(() => this.router.navigate(['/home']), 1000);
+        // Redirigir al panel de administrador
+        setTimeout(() => this.router.navigate(['/admin']), 1000);
       },
       error: () => {
-        this.error = 'Credenciales incorrectas';
+        this.error = 'Usuario o contraseña incorrectos';
         this.mensaje = '';
       },
     });

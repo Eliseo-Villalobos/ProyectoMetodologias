@@ -2,18 +2,17 @@
 
   <!-- Panel izquierdo -->
   <div class="login-left">
-  <img src="assets/in.gif" class="bg-gif" alt="" />
-  
-  <div>
-    <h1>¡Bienvenido a Pingu Tours!</h1>
-    <p>Inicia sesión para acceder a tus reservas y descubrir nuevos destinos.</p>
+    <img src="assets/in.gif" class="bg-gif" alt="" />
+    <div>
+      <h1>¡Bienvenido!</h1>
+      <p>Inicia sesión para acceder al panel de administración.</p>
+    </div>
+    <div class="dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
-  <div class="dots">
-    <span class="active"></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
   <!-- Panel derecho -->
   <div class="login-right">
@@ -23,21 +22,21 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email" placeholder="correo@ejemplo.com" />
-        <mat-icon matSuffix>email</mat-icon>
+        <mat-label>Usuario</mat-label>
+        <input matInput type="text" formControlName="usuario" placeholder="Nombre de usuario" />
+        <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
-      @if (form.get('email')?.invalid && form.get('email')?.touched) {
-        <span class="error-text">Email inválido</span>
+      @if (form.get('usuario')?.invalid && form.get('usuario')?.touched) {
+        <span class="error-text">El usuario es obligatorio</span>
       }
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+        <input matInput type="password" formControlName="contrasena" placeholder="Tu contraseña" />
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
-      @if (form.get('password')?.invalid && form.get('password')?.touched) {
-        <span class="error-text">Mínimo 6 caracteres</span>
+      @if (form.get('contrasena')?.invalid && form.get('contrasena')?.touched) {
+        <span class="error-text">Mínimo 4 caracteres</span>
       }
 
       @if (mensaje) {
@@ -50,10 +49,6 @@
       <button mat-raised-button class="submit-btn" type="submit">Entrar</button>
 
     </form>
-
-    <p class="login-link">
-      ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
-    </p>
   </div>
 
 </div>
