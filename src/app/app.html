@@ -1,54 +1,20 @@
-<app-sidebar (visibleChange)="onSidebarChange($event)" />
-
 <main class="main-content">
-  <app-perfil-header />
   <router-outlet />
 </main>
 
-<footer class="site-footer">
-  <!-- Links, contacto, redes -->
-  <div class="footer-inner">
-
-    <div class="footer-brand">
-      <div class="brand-row">
-        <img src="assets/pingutours.png" alt="Pingu Tours" />
-        <span class="brand-text" id="pingu-texto">Pingu Tours</span>
-      </div>
-      <p>Tu agencia de confianza para explorar los mejores destinos de México. Viaja sin preocupaciones.</p>
-    </div>
-
-    <div class="footer-col">
-      <h5>Explorar</h5>
-      <ul>
-        <li><a routerLink="/">Inicio</a></li>
-        <li><a routerLink="/viajes">Destinos</a></li>
-        <li><a routerLink="/register">Regístrate</a></li>
-        <li><a routerLink="/login">Iniciar sesión</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h5>Contacto</h5>
-      <ul>
-        <li><a href="mailto:hola@pingutours.mx">hola@pingutours.mx</a></li>
-        <li><a href="tel:+524491234567">+52 449 123 4567</a></li>
-      </ul>
-      <h5 style="margin-top: 28px;">Síguenos</h5>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="TikTok">TK</a>
-      </div>
-    </div>
-
+<footer class="main-footer">
+  <div class="footer-left">
+    <span class="logo">PROYCONS</span>
   </div>
-
-  <!-- Bottom bar con tu botón de chat -->
-  <div class="footer-bottom">
-    <span>© 2025 Pingu Tours. Todos los derechos reservados.</span>
-    <button class="footer-chat-btn" (click)="toggleChat()">🐧 Contáctanos</button>
+  <div class="footer-center">
+    <p>Irapuato, Guanajuato, México</p>
+    <p class="copyright">© 2026 PROYCONS - Todos los derechos reservados</p>
   </div>
-
+  <div class="footer-right">
+    <a href="#">INSTAGRAM</a>
+    <a href="#">FACEBOOK</a>
+    <a href="#">LINKEDIN</a>
+  </div>
 </footer>
 
 

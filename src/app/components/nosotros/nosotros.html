@@ -1,0 +1,88 @@
+<div class="nosotros-container">
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">PROYCONS</div>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
+      <a routerLink="/proyectos" routerLinkActive="active">PROYECTOS</a>
+      <a routerLink="/servicios" routerLinkActive="active">SERVICIOS</a>
+      <a routerLink="/nosotros" routerLinkActive="active">NOSOTROS</a>
+      <a routerLink="/contacto" routerLinkActive="active">CONTACTO</a>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN SUPERIOR CREMA: QUIÉNES SOMOS -->
+  <section class="quienes-somos-section">
+    <div class="quienes-somos-content">
+      
+      <div class="info-left">
+        <p class="section-tag">QUIÉNES SOMOS</p>
+        <h1>Una empresa familiar con décadas de trabajo y confianza</h1>
+        
+        <p class="paragraph">
+          PROYCONS es una empresa familiar dedicada a la construcción, el diseño arquitectónico y la 
+          remodelación con sede en Irapuato, Guanajuato. Nuestra trayectoria se construye sobre la 
+          confianza de clientes satisfechos y proyectos ejecutados con excelencia técnica y compromiso.
+        </p>
+        <p class="paragraph">
+          Atendemos a personas, familias y empresas que buscan calidad, profesionalismo y cumplimiento 
+          de plazos. Desde el diseño inicial hasta la entrega final, acompañamos cada etapa de tu proyecto 
+          con dedicación y transparencia.
+        </p>
+        <p class="paragraph">
+          Nuestro alcance abarca todo el estado de Guanajuato, con especial presencia en Irapuato, Silao, 
+          León y municipios cercanos, posicionándonos como referente regional en el sector de la construcción.
+        </p>
+        
+        <button class="btn-trabaja" routerLink="/contacto">TRABAJA CON NOSOTROS</button>
+      </div>
+
+      <!-- RECUADROS DE ESTADÍSTICAS NEGRAS -->
+      <div class="stats-right-grid">
+        <div class="stat-box">
+          <span class="stat-number">150+</span>
+          <span class="stat-label">PROYECTOS</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">12</span>
+          <span class="stat-label">AÑOS</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">6</span>
+          <span class="stat-label">SERVICIOS</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">Gto.</span>
+          <span class="stat-label">COBERTURA ESTATAL</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN INFERIOR BLANCA: NUESTROS VALORES -->
+  <section class="valores-section">
+    <div class="valores-content">
+      <div class="valores-header">
+        <h2>Nuestros valores</h2>
+        <div class="valores-line"></div>
+      </div>
+
+      <div class="valores-grid">
+        @for (item of valores; track item.titulo) {
+          <div class="valor-card">
+            <div class="valor-icon-wrapper">
+              <i class="material-icons">{{ item.icono }}</i>
+            </div>
+            <h3>{{ item.titulo }}</h3>
+            <p>{{ item.descripcion }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+ 
+
+</div>

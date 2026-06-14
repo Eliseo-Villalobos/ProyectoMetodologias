@@ -1,53 +1,129 @@
-<!-- Overlay para cerrar al hacer clic fuera -->
-<div class="overlay" (click)="cerrar.emit()"></div>
+<div class="contacto-container">
+  
+  <header class="navbar">
+    <div class="navbar-left">
+      <button class="menu-toggle">
+        <i class="material-icons">menu</i>
+      </button>
+      <span class="logo">PROYCONS</span>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
+      <a routerLink="/home" fragment="proyectos">PROYECTOS</a>
+      <a routerLink="/home" fragment="servicios">SERVICIOS</a>
+      <a routerLink="/home" fragment="nosotros">NOSOTROS</a>
+      <a routerLink="/contacto" routerLinkActive="active">CONTACTO</a>
+    </nav>
+  </header>
 
-<div class="chat-box">
+  <main class="contacto-content">
+    
+    <div class="title-section">
+      <h1>Contáctanos</h1>
+      <p class="subtitle">Estamos listos para escuchar tu proyecto y darte una propuesta personalizada</p>
+    </div>
 
-  <div class="chat-header">
-    <h3>Contáctanos</h3>
-    <button class="close-btn" (click)="cerrar.emit()">✕</button>
-  </div>
+    <div class="columns-grid">
+      
+      <section class="info-column">
+        <h2>Información de contacto</h2>
+        
+        <div class="info-list">
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="info-details">
+              <span>CORREO ELECTRÓNICO</span>
+              <p>contacto&#64;proycons.mx</p>
+            </div>
+          </div>
 
-  <form #formContacto="ngForm" (ngSubmit)="enviar(formContacto)">
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="material-icons">phone</i>
+            </div>
+            <div class="info-details">
+              <span>TELÉFONO</span>
+              <p>(462) 123 4567</p>
+            </div>
+          </div>
 
-    <input
-      name="nombre"
-      [(ngModel)]="nombre"
-      #nom="ngModel"
-      required
-      placeholder="Nombre"
-    >
-    @if (nom.invalid && nom.touched) {
-      <p>Requerido</p>
-    }
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="material-icons">location_on</i>
+            </div>
+            <div class="info-details">
+              <span>UBICACIÓN</span>
+              <p>Irapuato, Guanajuato, México</p>
+            </div>
+          </div>
 
-    <input
-      name="correo"
-      [(ngModel)]="correo"
-      #cor="ngModel"
-      required
-      email
-      placeholder="Correo"
-    >
-    @if (cor.invalid && cor.touched) {
-      <p>Correo inválido</p>
-    }
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="material-icons">access_time</i>
+            </div>
+            <div class="info-details">
+              <span>HORARIO</span>
+              <p>Lunes a Viernes · 9:00 - 18:00</p>
+            </div>
+          </div>
+        </div>
 
-    <textarea
-      name="mensaje"
-      [(ngModel)]="mensaje"
-      #msg="ngModel"
-      required
-      placeholder="Escribe tu mensaje..."
-    ></textarea>
-    @if (msg.invalid && msg.touched) {
-      <p>Mensaje requerido</p>
-    }
+        <div class="social-buttons">
+          <a href="#" class="btn-social">INSTAGRAM</a>
+          <a href="#" class="btn-social">FACEBOOK</a>
+          <a href="#" class="btn-social">LINKEDIN</a>
+        </div>
+      </section>
 
-    <button type="submit" [disabled]="formContacto.invalid">
-      Enviar
-    </button>
+      <section class="form-column">
+        <h2>Envíanos un mensaje</h2>
+        
+        <form (ngSubmit)="enviarFormulario()" #contactoForm="ngForm">
+          
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>NOMBRE</label>
+              <input type="text" name="nombre" [(ngModel)]="datosContacto.nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label>APELLIDOS</label>
+              <input type="text" name="apellidos" [(ngModel)]="datosContacto.apellidos" placeholder="Tus apellidos">
+            </div>
+          </div>
 
-  </form>
+          <div class="form-group">
+            <label>CORREO ELECTRÓNICO</label>
+            <input type="email" name="email" [(ngModel)]="datosContacto.email" required placeholder="correo&#64;ejemplo.com">
+          </div>
 
+          <div class="form-group">
+            <label>TELÉFONO (OPCIONAL)</label>
+            <input type="tel" name="telefono" [(ngModel)]="datosContacto.telefono" placeholder="(462) 000 0000">
+          </div>
+
+          <div class="form-group">
+            <label>SERVICIO DE INTERÉS</label>
+            <select name="servicio" [(ngModel)]="datosContacto.servicio" required>
+              <option value="" disabled selected>Selecciona un servicio...</option>
+              <option value="diseno">Diseño Arquitectónico</option>
+              <option value="construccion">Construcción</option>
+              <option value="remodelacion">Remodelación</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>MENSAJE</label>
+            <textarea name="mensaje" [(ngModel)]="datosContacto.mensaje" rows="4" required placeholder="Cuéntanos sobre tu proyecto, ubicación, tamaño aproximado..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" [disabled]="!contactoForm.form.valid">
+            ENVIAR MENSAJE
+          </button>
+        </form>
+      </section>
+
+    </div>
+  </main>
 </div>

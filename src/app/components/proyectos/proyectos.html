@@ -1,0 +1,46 @@
+<div class="proyectos-container">
+  
+  <header class="navbar">
+    <div class="logo">PROYCONS</div>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
+      <a routerLink="/proyectos" routerLinkActive="active">PROYECTOS</a>
+      <a routerLink="/home" fragment="servicios">SERVICIOS</a>
+      <a routerLink="/home" fragment="nosotros">NOSOTROS</a>
+      <a routerLink="/contacto" routerLinkActive="active">CONTACTO</a>
+    </nav>
+  </header>
+
+  <main class="proyectos-content">
+    <div class="title-section">
+      <h1>Galería de proyectos</h1>
+      <p class="subtitle">Explora nuestra colección de casas, edificios, renders y planos arquitectónicos</p>
+    </div>
+
+    <div class="filter-bar">
+      <button [class.active]="filtroActivo === 'TODOS'" (click)="filtrar('TODOS')">TODOS</button>
+      <button [class.active]="filtroActivo === 'CASAS'" (click)="filtrar('CASAS')">CASAS</button>
+      <button [class.active]="filtroActivo === 'EDIFICIOS'" (click)="filtrar('EDIFICIOS')">EDIFICIOS</button>
+      <button [class.active]="filtroActivo === 'RENDERS'" (click)="filtrar('RENDERS')">RENDERS</button>
+      <button [class.active]="filtroActivo === 'PLANOS'" (click)="filtrar('PLANOS')">PLANOS</button>
+      <button [class.active]="filtroActivo === 'REMODELACIONES'" (click)="filtrar('REMODELACIONES')">REMODELACIONES</button>
+    </div>
+
+    <div class="projects-grid">
+      @for (proyecto of proyectosFiltrados; track proyecto.id) {
+        <div class="project-card">
+          <div class="project-image-placeholder">
+            <span class="badge">{{ proyecto.tag }}</span>
+            <div class="diagonal-pattern"></div>
+          </div>
+          
+          <div class="project-info">
+            <p class="project-meta">{{ proyecto.subtitulo }}</p>
+            <h3>{{ proyecto.titulo }}</h3>
+            <p class="project-location">{{ proyecto.ubicacion }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+</div>
