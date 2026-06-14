@@ -31,16 +31,33 @@
         <div class="project-card">
           <div class="project-image-placeholder">
             <span class="badge">{{ proyecto.tag }}</span>
-            <div class="diagonal-pattern"></div>
+            <img [src]="proyecto.imagen" [alt]="proyecto.titulo" class="project-img" />
           </div>
           
           <div class="project-info">
             <p class="project-meta">{{ proyecto.subtitulo }}</p>
             <h3>{{ proyecto.titulo }}</h3>
             <p class="project-location">{{ proyecto.ubicacion }}</p>
+             <button class="btn-detalle" (click)="abrirModal(proyecto)">Ver detalles</button>
           </div>
         </div>
       }
     </div>
   </main>
+   @if (proyectoSeleccionado) {
+    <div class="modal-overlay" (click)="cerrarModal()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="cerrarModal()">✕</button>
+        <img [src]="proyectoSeleccionado.imagen" [alt]="proyectoSeleccionado.titulo" class="modal-img" />
+        <div class="modal-body">
+          <span class="badge">{{ proyectoSeleccionado.tag }}</span>
+          <h2>{{ proyectoSeleccionado.titulo }}</h2>
+          <p class="project-meta">{{ proyectoSeleccionado.subtitulo }}</p>
+          <p class="project-location">📍 {{ proyectoSeleccionado.ubicacion }}</p>
+          <p class="modal-descripcion">{{ proyectoSeleccionado.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  }
+
 </div>
