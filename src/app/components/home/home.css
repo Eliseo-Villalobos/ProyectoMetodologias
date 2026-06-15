@@ -361,7 +361,22 @@
 .btn-cta:hover {
   background-color: #cdbfb2;
 }
+.btn-admin {
+  background: transparent;
+  border: 1px solid #c19d60;
+  color: #c19d60 !important;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
 
+.btn-admin:hover {
+  background: #c19d60;
+  color: #111 !important;
+}
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 992px) {
   .hero-section { grid-template-columns: 1fr; }
@@ -375,4 +390,41 @@
   .nav-links a { margin: 0 10px; }
   .projects-grid { grid-template-columns: 1fr; }
   .hero-left h1 { font-size: 38px; }
+}
+/* --- IMÁGENES HERO GRID --- */
+.item-residential {
+  background-image: url('/assets/proyectos/casa1.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.item-render {
+  background-image: url('/assets/proyectos/render.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.item-blueprint {
+  background-image: url('/assets/proyectos/plano.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- IMÁGENES PROYECTOS DESTACADOS --- */
+.img-res {
+  background-image: url('/assets/proyectos/casa1.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.img-com {
+  background-image: url('/assets/proyectos/edificio.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.img-rem {
+  background-image: url('/assets/proyectos/remodelacion.png');
+  background-size: cover;
+  background-position: center;
 }

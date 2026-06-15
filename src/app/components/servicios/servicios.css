@@ -210,7 +210,22 @@
 .footer-social a:hover {
   color: #c19d60;
 }
+.btn-admin {
+  background: transparent;
+  border: 1px solid #c19d60;
+  color: #c19d60 !important;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
 
+.btn-admin:hover {
+  background: #c19d60;
+  color: #111 !important;
+}
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 900px) {
   .services-grid, .values-grid { grid-template-columns: 1fr 1fr; }

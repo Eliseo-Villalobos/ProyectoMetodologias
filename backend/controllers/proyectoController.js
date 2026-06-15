@@ -118,5 +118,24 @@ const deleteImagen = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al eliminar imagen' });
   }
 };
-
-module.exports = { getAll, getById, create, update, remove, addImagen, deleteImagen };
+const registrarVisita = async (req, res) => {
+  try {
+    await Proyecto.registrarVisita(req.params.id);
+    res.json({ mensaje: 'Visita registrada' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al registrar visita' });
+  }
+};
+// Obtener estadísticas de visitas por proyecto
+const getEstadisticas = async (req, res) => {
+  try {
+    const estadisticas = await Proyecto.getEstadisticas();
+    const totalVisitas = estadisticas.reduce((sum, p) => sum + p.total_visitas, 0);
+    res.json({ proyectos: estadisticas, totalVisitas });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al obtener estadísticas' });
+  }
+};
+module.exports = { getAll, getById, create, update, remove, addImagen, deleteImagen, registrarVisita, getEstadisticas};

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 interface Proyecto {
   id: number;
@@ -21,6 +22,7 @@ interface Proyecto {
   styleUrl: './proyectos.css'
 })
 export class Proyectos implements OnInit {
+  private http = inject(HttpClient);  
   filtroActivo: string = 'TODOS';
   proyectosFiltrados: Proyecto[] = [];
   proyectoSeleccionado: Proyecto | null = null; // ← proyecto que se muestra en el modal
@@ -80,10 +82,19 @@ export class Proyectos implements OnInit {
   // Abre el modal con el proyecto seleccionado
   abrirModal(proyecto: Proyecto) {
     this.proyectoSeleccionado = proyecto;
+    // Registrar visita al abrir el modal
+    this.registrarVisita(proyecto.id);
   }
 
   // Cierra el modal
   cerrarModal() {
     this.proyectoSeleccionado = null;
+  }
+  registrarVisita(id: number) {
+    this.http.post(`http://localhost:3000/api/proyectos/${id}/visita`, {})
+      .subscribe({
+        next: () => console.log('Visita registrada'),
+        error: (err: any) => console.error('Error registrando visita:', err)
+      });
   }
 } 

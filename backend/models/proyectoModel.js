@@ -77,8 +77,20 @@ const Proyecto = {
     await db.execute(
       'INSERT INTO visita (id_proyecto) VALUES (?)', [id_proyecto]
     );
-  }
-
+  },
+async getEstadisticas() {
+  const [rows] = await db.execute(`
+    SELECT p.id_proyecto, p.titulo, p.tipo, p.total_visitas,
+      COUNT(v.id_visita) as visitas_mes
+    FROM proyecto p
+    LEFT JOIN visita v ON p.id_proyecto = v.id_proyecto
+      AND v.fecha_hora >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+    GROUP BY p.id_proyecto
+    ORDER BY p.total_visitas DESC
+  `);
+  return rows;
+}
 };
+
 
 module.exports = Proyecto;

@@ -11,15 +11,6 @@
       <a class="nav-item active">
         <span>📊</span> Dashboard
       </a>
-      <a class="nav-item">
-        <span>🏗️</span> Proyectos
-      </a>
-      <a class="nav-item">
-        <span>🛠️</span> Servicios
-      </a>
-      <a class="nav-item">
-        <span>🏢</span> Empresa
-      </a>
     </nav>
 
     <button class="logout-btn" (click)="cerrarSesion()">
@@ -40,24 +31,48 @@
         <div class="card-icon">🏗️</div>
         <div class="card-info">
           <h3>Proyectos</h3>
-          <p class="card-number">0</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🛠️</div>
-        <div class="card-info">
-          <h3>Servicios</h3>
-          <p class="card-number">0</p>
+          <p class="card-number">{{ totalProyectos }}</p>
         </div>
       </div>
       <div class="card">
         <div class="card-icon">👁️</div>
         <div class="card-info">
           <h3>Visitas totales</h3>
-          <p class="card-number">0</p>
+          <p class="card-number">{{ totalVisitas }}</p>
         </div>
       </div>
     </div>
+
+    <!-- Tabla de estadísticas -->
+    <div class="stats-section">
+      <h2>Visitas por proyecto</h2>
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>Proyecto</th>
+            <th>Tipo</th>
+            <th>Visitas (mes)</th>
+            <th>Visitas totales</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of estadisticas; track p.id_proyecto) {
+            <tr>
+              <td>{{ p.titulo }}</td>
+              <td><span class="tag">{{ p.tipo }}</span></td>
+              <td>{{ p.visitas_mes }}</td>
+              <td><strong>{{ p.total_visitas }}</strong></td>
+            </tr>
+          }
+          @if (estadisticas.length === 0) {
+            <tr>
+              <td colspan="4" class="empty">No hay proyectos registrados</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
   </main>
 
 </div>
